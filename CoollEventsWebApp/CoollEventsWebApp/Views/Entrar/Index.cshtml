@@ -1,0 +1,26 @@
+﻿<link href="~/Resources/css/_login.css" type="text/css" rel="stylesheet" />
+
+@{
+    /*
+    ViewBag.Title = "CoolEvents: Entre";
+    Layout = "~/Views/coollayout.cshtml";
+    ViewBag.Style = "_login.css"; */
+}
+
+<div id="bg">
+    <div id="boxlogin">
+        <div id="content">
+            <form method="post" action="/Entrar">
+
+                <img src="~/Resources/img/partyhat.png" />
+                <input type="text" id="Email" name="Email" placeholder="email" required/>
+                <input type="text" id="Senha" name="Senha" placeholder="senha" required/>
+
+                <input type="submit" value="Entrar" />
+            </form>
+            <a href="/registrar"> Ainda não possui conta? Cadastre-se </a>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,64 @@
+﻿
+
+.secao { 
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.secaoWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 20vw;
+}
+
+
+span { 
+    text-align: center;
+    font-family: Roboto-bold, 'Times New Roman';
+    font-size: 2.5em;
+}
+
+p { 
+    text-align: center;
+    padding-top: 3vh;
+    font-size: 1.3em;
+    font-family: Roboto, 'Times New Roman';
+}
+
+.secaoParticipantes { 
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.integrantes { 
+    margin-top: 5vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+.integrante {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+    .integrante p {
+        margin-top: 3vh;
+        margin-left: 1vh;
+        margin-right: 1vh;
+        padding: 0;
+        background: #e28abb;
+        color: white;
+    }
+
+.integrante img { 
+    border-radius: 20px;
+    height: 40vh;
+    width: auto;
+}
