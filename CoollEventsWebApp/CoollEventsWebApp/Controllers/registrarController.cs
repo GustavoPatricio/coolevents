@@ -21,12 +21,12 @@ namespace CoollEventsWebApp.Controllers
 
             bool ok = usuario.Cadastrar();
 
-            if(!ok)
-            {
+            if (!ok)
                 return RedirectToAction("Index", "Erro");
-            }
 
-            return RedirectToAction("Index", "Entrar");
+            else
+                return RedirectToAction("Index", "Entrar");
+            
         }
 
     }

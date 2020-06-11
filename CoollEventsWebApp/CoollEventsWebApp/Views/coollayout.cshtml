@@ -36,6 +36,12 @@
                             <li><a title="works" href="/manutencao">Eventos</a></li>
                             <li><a title="blog" href="/Entrar">Entrar</a></li>
                             <li><a title="contact" href="/manutencao">Contato</a></li>
+                            @{ 
+                                if (Session["nomeUsuario"] != null)
+                                {
+                                    <li><a title="Perfil" href="/perfil">@Session["nomeUsuario"].ToString()</a></li>
+                                }
+                            }
                         </ul>
                     </nav>
                 </div>

@@ -27,7 +27,7 @@ namespace CoollEventsWebApp.Controllers
             else
             {
                 Response.Write("<script> alert('Sucesso!') </script>");
-                return View();
+                return RedirectToAction("Index", "Index");
             }
         }
     }

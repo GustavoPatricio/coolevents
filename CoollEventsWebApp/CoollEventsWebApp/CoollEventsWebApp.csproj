@@ -175,6 +175,7 @@
     <Compile Include="Controllers\ErroController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\ManutencaoController.cs" />
+    <Compile Include="Controllers\PerfilController.cs" />
     <Compile Include="Controllers\registrarController.cs" />
     <Compile Include="Controllers\SobreController.cs" />
     <Compile Include="Global.asax.cs">
@@ -201,6 +202,7 @@
     <Content Include="Views\Sobre\Index.cshtml" />
     <Content Include="Views\Manutencao\Index.cshtml" />
     <Content Include="Views\Erro\Index.cshtml" />
+    <Content Include="Views\Perfil\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
