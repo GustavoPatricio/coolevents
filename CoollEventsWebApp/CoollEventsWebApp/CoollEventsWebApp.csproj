@@ -101,6 +101,7 @@
     <Content Include="Resources\css\font-awesome-ie7.css" />
     <Content Include="Resources\css\font-awesome.css" />
     <Content Include="Resources\css\overwrite.css" />
+    <Content Include="Resources\css\perfil.css" />
     <Content Include="Resources\css\prettyPhoto.css" />
     <Content Include="Resources\css\sobre.css" />
     <Content Include="Resources\css\style.css" />
@@ -171,6 +172,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\EditarController.cs" />
     <Compile Include="Controllers\EntrarController.cs" />
     <Compile Include="Controllers\ErroController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
@@ -203,6 +205,7 @@
     <Content Include="Views\Manutencao\Index.cshtml" />
     <Content Include="Views\Erro\Index.cshtml" />
     <Content Include="Views\Perfil\Index.cshtml" />
+    <Content Include="Views\Editar\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

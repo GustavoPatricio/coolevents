@@ -1,10 +1,11 @@
 ﻿@model CoollEventsWebApp.Models.Usuario
 
 @{
-    ViewBag.Title = "Coolevents: Perfil";
+    ViewBag.Title = "Editar Perfil";
     Layout = "~/Views/coollayout.cshtml";
     ViewBag.Style = "perfil.css";
 }
+
 
 <div id="AllWrapper">
     <div id="leftside">
@@ -14,16 +15,15 @@
             <div style="font-size: 1.3rem; margin-top: 2vh"> @Model.Apelido </div>
 
             @*<div style="margin-top: 5vh;">
-                <a id="buttonEditar" href="@Url.Pa">
+                <a id="buttonEditar" href="/perfil/editar">
                     Editar dados
                 </a>
             </div>*@
             <div style="margin-top: 5vh">
-                @Html.ActionLink("Editar dados", "Index", "Editar", null ,new { id = "buttonEditar"})
+                @Html.ActionLink("Confirmar", "Index", "Editar", null, new { id = "buttonConfirmar" })
             </div>
-        
-     </div>
-        
+        </div>
+
     </div>
     <div id="rightside">
         <div id="perfilwrapper">
@@ -90,10 +90,10 @@
                     </div>
                 </div>
                 <div id="p3">
-                    <div class="itemPerfil">
+                    @*<div class="itemPerfil">
                         <h2 style="color: #dc5ca3"> Pontuação </h2>
                         <div> @Model.Pontuacao </div>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>

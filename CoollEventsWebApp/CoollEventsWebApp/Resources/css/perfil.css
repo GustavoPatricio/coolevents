@@ -1,0 +1,95 @@
+﻿#AllWrapper {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #bcfff5;
+    display: flex;
+}
+
+#leftside { 
+    width: 30vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+    font-size: 2rem;
+}
+
+#rightside {
+    width: 70vw;
+    height: 100vh;
+}
+
+#perfilwrapper { 
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vh;
+}
+
+h1 { 
+    font-size: 2.5rem;
+}
+
+h2 { 
+    font-size: 1.5rem;
+}
+
+#user {
+    margin: 10vh auto 0 auto;
+}
+
+#user img { 
+    width: 10vw;
+}
+
+#buttonEditar {
+    text-decoration: none;
+    border: none;
+    color: white;
+    background-color: #1685fe;
+    width: 10vw;
+    font-size: 1.4rem;
+    padding: 1vh 2vw;
+    font-family: sans-serif;
+    border-radius: 5px;
+    transition: all .3s ease-in-out;
+}
+
+    #buttonEditar:hover {
+        background-color: #1c76d8;
+    }
+
+#buttonConfirmar {
+    text-decoration: none;
+    border: none;
+    color: white;
+    background-color: #13fa74;
+    width: 10vw;
+    font-size: 1.4rem;
+    padding: 1vh 2vw;
+    font-family: sans-serif;
+    border-radius: 5px;
+    transition: all .3s ease-in-out;
+}
+
+    #buttonConfirmar:hover {
+        background-color: #17cc63;
+    }
+
+.itemPerfil { 
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5vh;
+}
+
+#itemsContent { 
+    display: flex;
+}
+
+#p1 {
+    clear: both;
+}
+
+#p2 { 
+    margin-left: 10vw;
+}

@@ -9,6 +9,10 @@ namespace CoollEventsWebApp.Controllers
     public class IndexController : Controller
     {
         // GET: Index
+
+        [Route("/")]
+        [Route("/index")]
+        [Route("/home")]
         public ActionResult Index()
         {
             return View();

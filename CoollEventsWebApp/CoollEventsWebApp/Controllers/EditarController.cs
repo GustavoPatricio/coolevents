@@ -7,26 +7,19 @@ using CoollEventsWebApp.Models;
 
 namespace CoollEventsWebApp.Controllers
 {
-    public class PerfilController : Controller
+    public class EditarController : Controller
     {
-        // GET: Perfil
-        
+        // GET: Editar
         public ActionResult Index()
         {
-
             if (Session["idUsuario"] == null)
                 return RedirectToAction("Index", "Index");
 
             Usuario usuario = new Usuario().GetUser(Convert.ToInt32(Session["idUsuario"]));
 
-            
+
 
             return View(usuario);
-        }
-
-        [Route("/perfil/editar")]
-        public ActionResult Editar() {
-            return View();
         }
     }
 }
