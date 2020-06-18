@@ -6,97 +6,138 @@
     ViewBag.Style = "perfil.css";
 }
 
+<style>
 
-<div id="AllWrapper">
-    <div id="leftside">
-        <div id="user">
-            <img src="~/Resources/img/usericon.png" />
-            <div> @Model.Nome @Model.Sobrenome </div>
-            <div style="font-size: 1.3rem; margin-top: 2vh"> @Model.Apelido </div>
+    #DataNascimento {
+        margin: 0;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid #191919;
+        font-size: 1.1rem;
+        width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+    }
 
-            @*<div style="margin-top: 5vh;">
+    .input-edit {
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid #191919;
+        font-size: 1.1rem;
+        width: 100%;
+    }
+
+    .input-edit:focus { 
+        outline: none;
+    }
+
+</style>
+
+@using(Html.BeginForm("Update", "Editar", FormMethod.Post)) {  
+    <div id="AllWrapper">
+        <div id="leftside">
+            <div id="user">
+                <img src="~/Resources/img/usericon.png" />
+                <div class="itemPerfil">
+                    <h2 style="text-align: left; font-size: 1.2rem"> Nome </h2>
+                    <input class="input-edit" id="Nome" name="Nome" value="@Model.Nome" />
+                </div>
+                <div class="itemPerfil">
+                    <h2 style="text-align: left; font-size: 1.2rem"> Sobrenome </h2>
+                    <input class="input-edit" id="Sobrenome" name="Sobrenome" value="@Model.Sobrenome" />
+                </div>
+                <div class="itemPerfil">
+                    <h2 style="text-align: left; font-size: 1.2rem"> Sobrenome </h2>
+                    <input class="input-edit" id="Apelido" name="Apelido" value="@Model.Apelido" />
+                </div>
+                @*<div style="margin-top: 5vh;">
                 <a id="buttonEditar" href="/perfil/editar">
                     Editar dados
                 </a>
             </div>*@
-            <div style="margin-top: 5vh">
-                @Html.ActionLink("Confirmar", "Index", "Editar", null, new { id = "buttonConfirmar" })
+                <div style="margin-top: 5vh">
+                    @Html.ActionLink("Confirmar", "Index", "Editar", null, new { id = "buttonConfirmar" })
+                </div>
             </div>
+
         </div>
+        <div id="rightside">
+            <div id="perfilwrapper">
+                <h1> Perfil </h1>
+                <div id="itemsContent">
+                    <div id="p1">
 
-    </div>
-    <div id="rightside">
-        <div id="perfilwrapper">
-            <h1> Perfil </h1>
-            <div id="itemsContent">
-                <div id="p1">
-
-                    <div class="itemPerfil">
-                        <h2> Email </h2>
-                        <div> @Model.Email </div>
-                    </div>
-                    <div class="itemPerfil">
-                        <h2> Senha </h2>
-                        <div> ******** </div>
-                    </div>
-                    <div class="itemPerfil">
-                        <h2> Data de Nascimento </h2>
-                        <div> @Model.DataNascimento </div>
-                    </div>
-                    <div class="itemPerfil">
-                        <h2> Sexo </h2>
-                        <div>
-                            @{
-                                if (Model.Sexo == "M")
-                                { <div>Masculino</div> }
-                                else
-                                { <div> Feminino </div>}
-                            }
+                        <div class="itemPerfil">
+                            <h2> Email </h2>
+                            <input class="input-edit" id="Apelido" name="Apelido" value="@Model.Email" />
+                        </div>
+                        <div class="itemPerfil">
+                            <h2> Data de Nascimento </h2>
+                            <input type="text" class="input-edit" id="DataNascimento" name="DataNascimento" value="@Model.DataNascimento"/>
+                        
+                        </div>
+                        <div class="itemPerfil">
+                            <h2> Sexo </h2>
+                            <div>
+                                @{
+                                    if (Model.Sexo == "M")
+                                    { <div>Masculino</div> }
+                                    else
+                                    { <div> Feminino </div>}
+                                }
+                            </div>
+                        </div>
+                        <div class="itemPerfil">
+                            <h2> Estado Civil </h2>
+                            <div> @Model.Civil</div>
+                        </div>
+                        <div class="itemPerfil">
+                            <h2> UF </h2>
+                            <div> @Model.UF </div>
                         </div>
                     </div>
-                    <div class="itemPerfil">
-                        <h2> Estado Civil </h2>
-                        <div> @Model.Civil</div>
+                    <div id="p2">
+                        <div class="itemPerfil">
+                            <h2> Cidade </h2>
+                            <div> @Model.Cidade </div>
+                        </div>
+                        <div class="itemPerfil">
+                            <h2> CEP </h2>
+                            <div> @Model.CEP </div>
+                        </div>
+                        <div class="itemPerfil">
+                            <h2> Bairro </h2>
+                            <div> @Model.Bairro </div>
+                        </div>
+                        <div class="itemPerfil">
+                            <h2> Logradouro + Número </h2>
+                            <div> @Model.Logradouro, @Model.Numero </div>
+                        </div>
+                        <div class="itemPerfil">
+                            <h2> Complemento </h2>
+                            <div> @Model.Complemento </div>
+                        </div>
+                        <div class="itemPerfil">
+                            <h2> Descrição </h2>
+                            <div> @Model.Descricao </div>
+                        </div>
                     </div>
-                    <div class="itemPerfil">
-                        <h2> UF </h2>
-                        <div> @Model.UF </div>
+                    <div id="p3">
+                        @*<div class="itemPerfil">
+                            <h2 style="color: #dc5ca3"> Pontuação </h2>
+                            <div> @Model.Pontuacao </div>
+                        </div>*@
                     </div>
-                </div>
-                <div id="p2">
-                    <div class="itemPerfil">
-                        <h2> Cidade </h2>
-                        <div> @Model.Cidade </div>
-                    </div>
-                    <div class="itemPerfil">
-                        <h2> CEP </h2>
-                        <div> @Model.CEP </div>
-                    </div>
-                    <div class="itemPerfil">
-                        <h2> Bairro </h2>
-                        <div> @Model.Bairro </div>
-                    </div>
-                    <div class="itemPerfil">
-                        <h2> Logradouro + Número </h2>
-                        <div> @Model.Logradouro, @Model.Numero </div>
-                    </div>
-                    <div class="itemPerfil">
-                        <h2> Complemento </h2>
-                        <div> @Model.Complemento </div>
-                    </div>
-                    <div class="itemPerfil">
-                        <h2> Descrição </h2>
-                        <div> @Model.Descricao </div>
-                    </div>
-                </div>
-                <div id="p3">
-                    @*<div class="itemPerfil">
-                        <h2 style="color: #dc5ca3"> Pontuação </h2>
-                        <div> @Model.Pontuacao </div>
-                    </div>*@
                 </div>
             </div>
         </div>
     </div>
-</div>
+}
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" type="text/javascript"></script>
+<script>
+    $('#DataNascimento').mask('00/00/0000');
+</script>
+}

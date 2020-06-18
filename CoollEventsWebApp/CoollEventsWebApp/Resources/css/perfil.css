@@ -87,9 +87,11 @@ h2 {
 }
 
 #p1 {
+    width: 30%;
     clear: both;
 }
 
-#p2 { 
+#p2 {
+    width: 30%;
     margin-left: 10vw;
 }

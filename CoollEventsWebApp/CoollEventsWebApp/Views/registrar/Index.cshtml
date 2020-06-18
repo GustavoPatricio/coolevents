@@ -135,25 +135,25 @@
       
          <script type="text/javascript">
 
-                $("#CEP").change(function(){
+            $("#CEP").change(function(){
                 
-                    $.ajax({
+                $.ajax({
                 
-                        url: 'https://viacep.com.br/ws/' + $(this).val() + '/json/unicode/',
+                    url: 'https://viacep.com.br/ws/' + $(this).val() + '/json/unicode/',
           
-                        dataType: 'json',
+                    dataType: 'json',
                
-                        success: function (resposta) {
+                    success: function (resposta) {
                  
-                            $("#Logradouro").val(resposta.logradouro);
-                            $("#Complemento").val(resposta.complemento);
-                            $("#Bairro").val(resposta.bairro);
-                            $("#Cidade").val(resposta.localidade);
-                            $("#Numero").focus();
+                        $("#Logradouro").val(resposta.logradouro);
+                        $("#Complemento").val(resposta.complemento);
+                        $("#Bairro").val(resposta.bairro);
+                        $("#Cidade").val(resposta.localidade);
+                        $("#Numero").focus();
 
-                        }
-                    });
-	});
+                    }
+                });
+	        });
 
         </script>
     </div>
