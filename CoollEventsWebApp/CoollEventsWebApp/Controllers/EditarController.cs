@@ -21,5 +21,10 @@ namespace CoollEventsWebApp.Controllers
 
             return View(usuario);
         }
+
+        public ActionResult Update(Usuario usuario) 
+        {
+            return View();
+        }
     }
 }

@@ -20,16 +20,33 @@
         padding: 0;
     }
 
-    .input-edit {
+    #Sexo, #Civil, #UF { 
+        background-color: transparent;
+        border: 1px solid #1f1f1f;
+        color: #1f1f1f;
+    }
+
+    .itemPerfil h2 {
+        color: #4d4d4d !important;
+    }
+
+    .input-edit, #CEP {
+        color: #1a1a1a;
         background-color: transparent;
         border: none;
         border-bottom: 1px solid #191919;
         font-size: 1.1rem;
         width: 100%;
+        box-shadow: none;
+        border-radius: 0;
     }
 
-    .input-edit:focus { 
-        outline: none;
+        .input-edit:focus, #CEP:focus {
+            outline: none;
+        }
+
+    form { 
+        margin: 0;
     }
 
 </style>
@@ -57,7 +74,7 @@
                 </a>
             </div>*@
                 <div style="margin-top: 5vh">
-                    @Html.ActionLink("Confirmar", "Index", "Editar", null, new { id = "buttonConfirmar" })
+                    <input type="submit" id="buttonConfirmar" value="Confirmar" />
                 </div>
             </div>
 
@@ -70,7 +87,7 @@
 
                         <div class="itemPerfil">
                             <h2> Email </h2>
-                            <input class="input-edit" id="Apelido" name="Apelido" value="@Model.Email" />
+                            <input class="input-edit" id="Email" name="Email" value="@Model.Email" />
                         </div>
                         <div class="itemPerfil">
                             <h2> Data de Nascimento </h2>
@@ -79,48 +96,98 @@
                         </div>
                         <div class="itemPerfil">
                             <h2> Sexo </h2>
-                            <div>
+                            <select class="form-control" id="Sexo" name="Sexo" style="font-size: 1rem;">
                                 @{
                                     if (Model.Sexo == "M")
-                                    { <div>Masculino</div> }
+                                    {
+                                        <option selected>Masculino</option>
+                                        <option>Feminino</option>
+                                    }
                                     else
-                                    { <div> Feminino </div>}
+                                    {
+                                        <option>Masculino</option>
+                                        <option selected>Feminino</option>
+                                    }
                                 }
-                            </div>
+                            </select>
                         </div>
                         <div class="itemPerfil">
                             <h2> Estado Civil </h2>
-                            <div> @Model.Civil</div>
+                            <select class="form-control dropdown-select" id="Civil" name="Civil" style="font-size: 1rem;">
+                                @{
+                                    if (Model.Civil == "Solteiro")
+                                    {
+                                        <option selected>Solteiro</option>
+                                        <option>Casado</option>
+                                    }
+                                    else
+                                    {
+                                        <option>Solteiro</option>
+                                        <option selected>Casado</option>
+                                    }
+                                }
+                            </select>
                         </div>
                         <div class="itemPerfil">
                             <h2> UF </h2>
-                            <div> @Model.UF </div>
+                            <select id="UF" name="UF" style="font-size: 1rem;">
+                                <option value="@Model.UF" selected>@Model.UF</option>
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PR">Paraná</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="RO">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="TO">Tocantins</option>
+                                <option value="EX">Estrangeiro</option>
+                            </select>
                         </div>
                     </div>
                     <div id="p2">
                         <div class="itemPerfil">
                             <h2> Cidade </h2>
-                            <div> @Model.Cidade </div>
+                            <input class="input-edit" id="Cidade" name="Cidade" value="@Model.Cidade" />
                         </div>
                         <div class="itemPerfil">
                             <h2> CEP </h2>
-                            <div> @Model.CEP </div>
+                            <input type="number" class="input-edit" id="CEP" name="CEP" value="@Model.CEP" />
                         </div>
                         <div class="itemPerfil">
                             <h2> Bairro </h2>
-                            <div> @Model.Bairro </div>
+                            <input class="input-edit" id="Bairro" name="Bairro" value="@Model.Bairro" />
                         </div>
                         <div class="itemPerfil">
                             <h2> Logradouro + Número </h2>
-                            <div> @Model.Logradouro, @Model.Numero </div>
+                            <input class="input-edit" id="Logradouro" name="Logradouro" value="@Model.Logradouro" />
+                            <input class="input-edit" id="Numero" name="Numero" value="@Model.Numero" style="margin-top: 2vh; width: 30%;"/>
                         </div>
                         <div class="itemPerfil">
                             <h2> Complemento </h2>
-                            <div> @Model.Complemento </div>
+                            <input class="input-edit" id="Complemento" name="Complemento" value="@Model.Complemento" />
                         </div>
                         <div class="itemPerfil">
                             <h2> Descrição </h2>
-                            <div> @Model.Descricao </div>
+                            <input class="input-edit" id="Descricao" name="Descricao" value="@Model.Descricao" />
                         </div>
                     </div>
                     <div id="p3">
@@ -140,4 +207,3 @@
 <script>
     $('#DataNascimento').mask('00/00/0000');
 </script>
-}
