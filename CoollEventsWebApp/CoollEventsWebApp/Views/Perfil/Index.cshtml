@@ -9,6 +9,10 @@
 <div id="AllWrapper">
     <div id="leftside">
         <div id="user">
+            @using (Html.BeginForm("Index", "UpdateImage", FormMethod.Post))
+            {
+                <input type="file" id="userImagem"/>
+            }
             <img src="~/Resources/img/usericon.png" />
             <div> @Model.Nome @Model.Sobrenome </div>
             <div style="font-size: 1.3rem; margin-top: 2vh"> @Model.Apelido </div>
@@ -37,7 +41,7 @@
                     </div>
                     <div class="itemPerfil">
                         <h2> Senha </h2>
-                        <div> ******** </div>
+                        <div> ******** <a style="color: #00a2e0; float: right" href="/trocarsenha">Trocar senha</a></div> 
                     </div>
                     <div class="itemPerfil">
                         <h2> Data de Nascimento </h2>

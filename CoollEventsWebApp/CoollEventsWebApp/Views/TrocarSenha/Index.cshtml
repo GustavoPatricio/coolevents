@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/coollayout.cshtml";
+    ViewBag.Style = "_trocarsenha.css";
+}
+
+<div id="bg">
+    <div id="boxlogin">
+        <div id="content">
+            @using(Html.BeginForm(FormMethod.Post)) {
+                <div style="margin-top: 10vh;">
+                    <input type="password" id="SenhaAtual" name="SenhaAtual" placeholder="Senha atual" required/>
+                    <input type="password" id="NovaSenha" name="NovaSenha" placeholder="Nova senha" style="margin-top: 7vh;" required/>
+                    <input type="password" id="ConfirmarNovaSenha" name="ConfirmarNovaSenha" style="margin-top: 2vh;" placeholder="Confirmar nova senha" required/>
+                    <input type="submit" id="submitButton" onclick="return CheckForm()"/>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    function CheckForm() {
+        if ($("#NovaSenha").val() != $("#ConfirmarNovaSenha").val()) {
+            alert('As senhas não coincidem');
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+
+</script>
+

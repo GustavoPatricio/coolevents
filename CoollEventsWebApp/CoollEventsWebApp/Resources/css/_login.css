@@ -62,9 +62,6 @@
     transition: all .4s ease-in-out;
 }
 
-#content a:hover { 
-    background-color: #0077e9
-}
 
 #content form { 
     width: 100%;

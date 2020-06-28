@@ -5,6 +5,7 @@ using System.Web;
 using System.Data;
 using System.Data.SqlClient;
 using CoollEventsWebApp.Models;
+using System.Web.Helpers;
 
 namespace CoollEventsWebApp.Models
 {
@@ -36,11 +37,12 @@ namespace CoollEventsWebApp.Models
 
         public bool Cadastrar() {
             try {
+
                 this.Pontuacao = 0;
 
                 BDConexao conexao = new BDConexao();
 
-                conexao.command.CommandText = "INSERT INTO tbl_USUARIO values (@NOME, @SOBRENOME, @EMAIL, @SENHA, @NASC, @SEXO, null, @APELIDO, @CIVIL, @UF, " +
+                conexao.command.CommandText = "INSERT INTO tbl_USUARIO values (@NOME, @SOBRENOME, @EMAIL, @SENHA, @NASC, @GENERO, null, @APELIDO, @CIVIL, @UF, " +
                     "@CIDADE, @CEP, @BAIRRO, @LOGRADOURO, @NUMERO, @COMPLEMENTO, @DESCRICAO, @PONTUACAO)";
 
                 conexao.command.Parameters.Add("@NOME", SqlDbType.NVarChar).Value = Nome;
@@ -48,7 +50,7 @@ namespace CoollEventsWebApp.Models
                 conexao.command.Parameters.Add("@EMAIL", SqlDbType.NVarChar).Value = Email;
                 conexao.command.Parameters.Add("@SENHA", SqlDbType.NVarChar).Value = CoolEventsEncrypter.Encrypt(Senha);
                 conexao.command.Parameters.Add("@NASC", SqlDbType.Date).Value = DataNascimento;
-                conexao.command.Parameters.Add("@SEXO", SqlDbType.Char).Value = Sexo;
+                conexao.command.Parameters.Add("@GENERO", SqlDbType.Char).Value = Sexo;
                 conexao.command.Parameters.Add("@APELIDO", SqlDbType.NVarChar).Value = Apelido;
                 conexao.command.Parameters.Add("@CIVIL", SqlDbType.NVarChar).Value = Civil;
                 conexao.command.Parameters.Add("@UF", SqlDbType.NVarChar).Value = UF;
@@ -121,5 +123,94 @@ namespace CoollEventsWebApp.Models
                 return null;
             }
         }
+
+        public bool UpdateUser(Usuario usuario, int idUsuario) {
+
+            try { 
+                BDConexao conexao = new BDConexao();
+
+                string command = "exec updateUsuario " +
+                    "@IDUSUARIO = @_ID, " +
+                    "@NOME = @_NOME, " +
+                    "@SOBRENOME = @_SOBRENOME, " +
+                    "@EMAIL = @_EMAIL, " +
+                    "@NASC = @_NASC, " +
+                    "@GENERO = @_SEXO, " +
+                    "@FOTO = @_FOTO, " +
+                    "@APELIDO = @_APELIDO, " +
+                    "@CIVIL = @_CIVIL, " +
+                    "@UF = @_UF, " +
+                    "@CIDADE = @_CIDADE, " +
+                    "@CEP = @_CEP, " +
+                    "@BAIRRO = @_BAIRRO, " +
+                    "@LOGRADOURO = @_LOGRADOURO," +
+                    "@NUMERO = @_NUMERO, " +
+                    "@COMPLEMENTO = @_COMPLEMENTO," +
+                    "@DESCRICAO = @_DESCRICAO";
+
+                conexao.command.CommandText = command;
+                conexao.command.Parameters.Add("@_ID", SqlDbType.Int).Value = idUsuario;
+                conexao.command.Parameters.Add("@_NOME", SqlDbType.VarChar).Value = usuario.Nome;
+                conexao.command.Parameters.Add("@_SOBRENOME", SqlDbType.VarChar).Value = usuario.Sobrenome;
+                conexao.command.Parameters.Add("@_EMAIL", SqlDbType.VarChar).Value = usuario.Email;
+                conexao.command.Parameters.Add("@_NASC", SqlDbType.Date).Value = usuario.DataNascimento;
+                conexao.command.Parameters.Add("@_SEXO", SqlDbType.Char).Value = usuario.Sexo;
+                conexao.command.Parameters.Add("@_FOTO", SqlDbType.VarChar).Value = usuario.Foto;
+                conexao.command.Parameters.Add("@_APELIDO", SqlDbType.VarChar).Value = usuario.Apelido;
+                conexao.command.Parameters.Add("@_CIVIL", SqlDbType.VarChar).Value = usuario.Civil;
+                conexao.command.Parameters.Add("@_UF", SqlDbType.Char).Value = usuario.UF;
+                conexao.command.Parameters.Add("@_CIDADE", SqlDbType.VarChar).Value = usuario.Cidade;
+                conexao.command.Parameters.Add("@_CEP", SqlDbType.VarChar).Value = usuario.CEP;
+                conexao.command.Parameters.Add("@_BAIRRO", SqlDbType.VarChar).Value = usuario.Bairro;
+                conexao.command.Parameters.Add("@_LOGRADOURO", SqlDbType.VarChar).Value = usuario.Logradouro;
+                conexao.command.Parameters.Add("@_NUMERO", SqlDbType.Int).Value = usuario.Numero;
+                conexao.command.Parameters.Add("@_COMPLEMENTO", SqlDbType.VarChar).Value = usuario.Complemento;
+                conexao.command.Parameters.Add("@_DESCRICAO", SqlDbType.VarChar).Value = usuario.Descricao;
+
+                conexao.connection.Open();
+                conexao.command.ExecuteNonQuery();
+                conexao.connection.Close();
+
+                return true;
+            }
+            catch(Exception Ex) {  
+                return false;
+            }
+        }
+
+        public static int TrocarSenha(int idUsuario, string senhaAtual, string SenhaNova) {
+            try
+            {
+                string cryptoSenhaAtual = CoolEventsEncrypter.Encrypt(senhaAtual); 
+                string cryptoSenhaNova = CoolEventsEncrypter.Encrypt(SenhaNova); 
+
+                BDConexao conexao = new BDConexao();
+                conexao.connection.Open();
+                conexao.command.CommandText = "SELECT COUNT(*) FROM TBL_USUARIO WHERE SENHA = @_SENHA AND ID_USUARIO = @IDUSUARIO";
+                conexao.command.Parameters.Add("@_SENHA", SqlDbType.VarChar).Value = cryptoSenhaAtual;
+                conexao.command.Parameters.Add("@IDUSUARIO", SqlDbType.Int).Value = idUsuario;
+
+                if((int)conexao.command.ExecuteScalar() == 0)
+                {
+                    return 0;
+                }
+
+                conexao.command.Parameters.Clear();
+
+                conexao.command.CommandText = "UPDATE TBL_USUARIO SET SENHA = @_NOVASENHA WHERE ID_USUARIO = @IDUSUARIO";
+                conexao.command.Parameters.Add("@_NOVASENHA", SqlDbType.VarChar).Value = cryptoSenhaNova;
+                conexao.command.Parameters.Add("@IDUSUARIO", SqlDbType.Int).Value = idUsuario;
+
+                conexao.command.ExecuteNonQuery();
+
+                conexao.connection.Close();
+                return 1;
+            }
+            catch (Exception)
+            {
+                return 2;
+            }
+        }
+
     }
 }

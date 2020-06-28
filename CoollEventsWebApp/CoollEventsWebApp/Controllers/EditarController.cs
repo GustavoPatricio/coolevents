@@ -24,7 +24,17 @@ namespace CoollEventsWebApp.Controllers
 
         public ActionResult Update(Usuario usuario) 
         {
-            return View();
+            usuario.Foto = ""; // apagar essa linha futuramente
+
+            if(usuario.UpdateUser(usuario, (int)Session["idUsuario"]))
+            {
+                return RedirectToAction ("Index", "Perfil");
+            }
+            else
+            {
+                return RedirectToAction("index", "Erro");
+            }
+           
         }
     }
 }

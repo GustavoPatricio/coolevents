@@ -13,6 +13,11 @@ namespace CoollEventsWebApp.Controllers
         // GET: registrar
         public ActionResult Index()
         {
+            if (Session["idUsuario"] != null)
+            {
+                return RedirectToAction("Index", "Index");
+            }
+
             return View();
         }
 
@@ -26,7 +31,6 @@ namespace CoollEventsWebApp.Controllers
 
             else
                 return RedirectToAction("Index", "Entrar");
-            
         }
 
     }

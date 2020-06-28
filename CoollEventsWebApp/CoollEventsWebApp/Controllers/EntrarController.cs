@@ -13,6 +13,12 @@ namespace CoollEventsWebApp.Controllers
 
         public ActionResult Index()
         {
+
+            if(Session["idUsuario"] != null)
+            {
+                return RedirectToAction("Index", "Index");
+            }
+
             return View();
         }
 

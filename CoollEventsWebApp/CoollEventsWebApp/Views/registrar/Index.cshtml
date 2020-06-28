@@ -10,7 +10,7 @@
 
 <div id="bg">
     <div id="regcontainer">
-        <form action="/registrar" method="post">
+        <form name="regForm" action="/registrar" method="post">
             <div class="input-text">
                 <label> Nome </label>
                 <input type="text" name="Nome" id="Nome" required />
@@ -129,7 +129,7 @@
             </div>
 
 
-            <input type="submit" value="Cadastrar!" />
+            <input type="submit" id="submit" onclick="return CheckForm()" value="Cadastrar!" />
         </form>
 
       
@@ -155,6 +155,20 @@
                 });
 	        });
 
+            function CheckForm() {
+                 if ($("#Senha").val() != $("#ConfirmaSenha").val()) {
+                     alert('As senhas não coincidem');
+                     return false;
+                 }
+                if ($("#DataNascimento").val().substring(6) < 1900 || $("#DataNascimento").val().substring(6) > (new Date().getFullYear() - 18)) {
+                    alert('Data de nascimento inválida. OBS: É obrigatório ter mais de 18 anos.');
+                    return false;
+                }
+                 else { 
+                     return true;
+                 }
+            };
+            
         </script>
     </div>
 </div>
