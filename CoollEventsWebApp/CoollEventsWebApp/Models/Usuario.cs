@@ -101,7 +101,7 @@ namespace CoollEventsWebApp.Models
                 //user.Senha = dr.GetString(4);
                 user.DataNascimento = Convert.ToString(dr.GetDateTime(5));
                 user.Sexo = dr.GetString(6);
-                //user.Foto = dr.GetString(7);
+                user.Foto = dr.GetString(7);
                 user.Apelido = dr.GetString(8);
                 user.Civil = dr.GetString(9);
                 user.UF = dr.GetString(10);
@@ -209,6 +209,26 @@ namespace CoollEventsWebApp.Models
             catch (Exception)
             {
                 return 2;
+            }
+        }
+
+        public static bool SaveUserImageById(int idUsuario, string fileName) {
+            try
+            {
+                BDConexao conexao = new BDConexao();
+                conexao.command.CommandText = "UPDATE TBL_USUARIO SET foto = @FILENAME WHERE ID_USUARIO = @IDUSUARIO";
+                conexao.command.Parameters.Add("@FILENAME", SqlDbType.VarChar).Value = fileName;
+                conexao.command.Parameters.Add("@IDUSUARIO", SqlDbType.Int).Value = idUsuario;
+
+                conexao.connection.Open();
+                conexao.command.ExecuteNonQuery();
+                conexao.connection.Close();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
 

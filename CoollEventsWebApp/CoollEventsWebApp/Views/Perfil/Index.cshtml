@@ -8,13 +8,11 @@
 
 <div id="AllWrapper">
     <div id="leftside">
+        
         <div id="user">
-            @using (Html.BeginForm("Index", "UpdateImage", FormMethod.Post))
-            {
-                <input type="file" id="userImagem"/>
-            }
-            <img src="~/Resources/img/usericon.png" />
-            <div> @Model.Nome @Model.Sobrenome </div>
+            <div style="margin-bottom: 2vh;"><a href="/atualizaravatar" style="font-size: 1rem; color: #00a2e0"> Atualizar Avatar </a></div>
+            <img src="http://localhost:3000/userImagens/@Model.Foto" id="fotoperfil" style="max-width: 12vw; min-width: 12vw;" />
+            <div style="margin-top: 5vh;"> @Model.Nome @Model.Sobrenome </div>
             <div style="font-size: 1.3rem; margin-top: 2vh"> @Model.Apelido </div>
 
             @*<div style="margin-top: 5vh;">
@@ -23,11 +21,11 @@
                 </a>
             </div>*@
             <div style="margin-top: 5vh">
-                @Html.ActionLink("Editar dados", "Index", "Editar", null ,new { id = "buttonEditar"})
+                @Html.ActionLink("Editar dados", "Index", "Editar", null, new { id = "buttonEditar" })
             </div>
-        
-     </div>
-        
+
+        </div>
+
     </div>
     <div id="rightside">
         <div id="perfilwrapper">

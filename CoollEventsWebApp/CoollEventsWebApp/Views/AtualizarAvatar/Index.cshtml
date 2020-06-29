@@ -6,9 +6,6 @@
 }
 
 <style>
-    #imagem {
-        display: none;
-    }
 
     #imagemUploader { 
         text-align: center;
@@ -26,16 +23,20 @@
         margin: auto;
     }
 
+    #userImagem {
+        margin: auto;
+    }
+
 </style>
 
 <div id="bg">
     <div id="boxlogin">
         <div id="content">
-            @using (Html.BeginForm(FormMethod.Post))
+            @using (Html.BeginForm("Index", "AtualizarAvatar", FormMethod.Post, new { enctype = "multipart/form-data"}))
             {
                 <img src="~/Resources/img/usericon.png"/>
-                <label for="imagem" id="imagemUploader"> Carregar imagem </label>
-                <input type="file" name="imagem" id="imagem" accept=".png, .jpg, .jpeg" />
+                @*<label for="imagem" id="imagemUploader"> Carregar imagem </label>*@
+                <input type="file" name="userImagem" id="userImagem" accept=".png, .jpg, .jpeg" />
                 <input type="submit" id="submit" value="Confirmar"/>
             }
         </div>
