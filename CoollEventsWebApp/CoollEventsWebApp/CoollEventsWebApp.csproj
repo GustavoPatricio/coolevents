@@ -124,7 +124,7 @@
     <Content Include="Resources\img\Gabriela.jpeg" />
     <Content Include="Resources\img\glyphicons-halflings.png" />
     <Content Include="Resources\img\GustavoP.JPG" />
-    <Content Include="Resources\img\homebg.jpg" />
+    <Content Include="Resources\img\home.jpg" />
     <Content Include="Resources\img\icons\basket.png" />
     <Content Include="Resources\img\icons\camera.png" />
     <Content Include="Resources\img\icons\creativity.png" />
@@ -132,6 +132,7 @@
     <Content Include="Resources\img\icons\laptop.png" />
     <Content Include="Resources\img\JulioO.jpeg" />
     <Content Include="Resources\img\logo-image.png" />
+    <Content Include="Resources\img\lupa.png" />
     <Content Include="Resources\img\partyhat.png" />
     <Content Include="Resources\img\prettyPhoto\default\default_thumb.png" />
     <Content Include="Resources\img\prettyPhoto\default\loader.gif" />
@@ -175,9 +176,11 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AtualizarAvatarController.cs" />
+    <Compile Include="Controllers\ContatoController.cs" />
     <Compile Include="Controllers\EditarController.cs" />
     <Compile Include="Controllers\EntrarController.cs" />
     <Compile Include="Controllers\ErroController.cs" />
+    <Compile Include="Controllers\EventosController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Controllers\ManutencaoController.cs" />
@@ -190,7 +193,9 @@
     </Compile>
     <Compile Include="Models\BDConexao.cs" />
     <Compile Include="Models\CoolEventsEncrypter.cs" />
+    <Compile Include="Models\CoolEventsMailer.cs" />
     <Compile Include="Models\Evento.cs" />
+    <Compile Include="Models\EventoTemplate.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -213,6 +218,8 @@
     <Content Include="Views\Editar\Index.cshtml" />
     <Content Include="Views\TrocarSenha\Index.cshtml" />
     <Content Include="Views\AtualizarAvatar\Index.cshtml" />
+    <Content Include="Views\Contato\Index.cshtml" />
+    <Content Include="Views\Eventos\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

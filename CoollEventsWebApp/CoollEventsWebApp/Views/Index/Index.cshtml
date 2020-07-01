@@ -6,7 +6,7 @@
 
 
 <!-- Header area -->
-<div id="header-wrapper" class="header-slider">
+<div id="header-wrapper" class="header-slider" style="background: url('/Resources/img/home.jpg') !important">
     <header class="clearfix">
         <div class="logo">
             <img src="img/logo-image.png" alt="" />
@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="span12">
                     <div id="main-flexslider" class="flexslider">
-                        <ul class="slides">
+                        <ul class="slides" style="text-shadow: .2px .3px 4px black;">
                             <li>
                                 <p class="home-slide-content">
                                     <strong>Seu evento</strong> mais fácil
@@ -277,46 +277,3 @@
     </div>
 </section>
 <!-- end spacer section -->
-
-<!-- section: contact -->
-<section id="contact" class="section green">
-    <div class="container">
-        <h4>Entre em contato!</h4>
-        <div class="blankdivider30">
-        </div>
-        <div class="row">
-            <div class="span12">
-                <div class="cform" id="contact-form">
-                    <div id="sendmessage">Your message has been sent. Thank you!</div>
-                    <div id="errormessage"></div>
-                    <form action="" method="post" role="form" class="contactForm">
-                        <div class="row">
-                            <div class="span6">
-                                <div class="field your-name form-group">
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="Seu nome" data-rule="minlen:4" data-msg="4 caracteres no mínimo." />
-                                    <div class="validation"></div>
-                                </div>
-                                <div class="field your-email form-group">
-                                    <input type="text" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Coloque um email válido" />
-                                    <div class="validation"></div>
-                                </div>
-                                <div class="field subject form-group">
-                                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Assunto" data-rule="minlen:4" data-msg="Mínimo 8 caracteres" />
-                                    <div class="validation"></div>
-                                </div>
-                            </div>
-                            <div class="span6">
-                                <div class="field message form-group">
-                                    <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Escreva sua mensagem" placeholder="Mensagem"></textarea>
-                                    <div class="validation"></div>
-                                </div>
-                                <input type="submit" value="Enviar" class="btn btn-theme pull-left">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!-- ./span12 -->
-        </div>
-    </div>
-</section>

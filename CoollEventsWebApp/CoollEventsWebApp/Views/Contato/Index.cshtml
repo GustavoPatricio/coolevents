@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/coollayout.cshtml";
+}
+<style>
+    #bg { 
+        width: 100vw;
+        height: 100vh;
+        background-color: #c7faf8;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #wrapper { 
+        width: 50vw;
+        height: 60vh;
+        margin: auto;
+        background-color: white;
+        box-shadow: .5px .8px 4px #808080;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    form { 
+        margin: auto;
+        width: 50%;
+    }
+
+    input[type='text'], input[type='email'] {
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        border-bottom: 1px solid #808080;
+        font-size: 1.2rem;
+        margin-bottom: 8vh;
+        padding: 0;
+        padding-bottom: 5px;
+        width: 100% !important;
+    }
+
+        input[type='text']:focus, input[type='email']:focus {
+            border-radius: 0;
+            box-shadow: none !important;
+            border-bottom: 1px solid #808080 !important;
+            color: black !important;
+        }
+
+        input[type='text']:invalid, input[type='email']:invalid {
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+    input[type='submit'] {
+        background-color: transparent;
+        border: none;
+        border: 1px solid #0fa0ff;
+        color: #0fa0ff;
+        transition: all .4s ease-in-out;
+        padding: 1vw;
+    }
+
+        input[type='submit']:hover {
+            background-color: #0fa0ff;
+            border: 1px solid white;
+            color: white;
+        }
+
+</style>
+
+<div id="bg">
+    <div id="wrapper">
+        @using (Html.BeginForm(FormMethod.Post))
+        {
+            <input id="Nome" name="Nome" type="text" placeholder="Nome" required/> 
+            <input id="Email" name="Email" type="email" placeholder="Seu email" required/> 
+            <input id="Assunto" name="Assunto" type="text" placeholder="Assunto" required/> 
+            <input id="Mensagem" name="Mensagem" type="text" placeholder="Mensagem" required/> 
+
+            <input type="submit" value="Enviar!" />
+        }
+    </div>
+</div>
+
+
