@@ -158,7 +158,7 @@
             Criar evento    
         </a>
         <a href="/criarEventos">
-            Ver Convite 
+            Meus convites
         </a>
         <a href="/criarEventos">
             Enquetes
@@ -183,7 +183,7 @@
    @foreach(CoollEventsWebApp.Models.EventoTemplate evento in Model) { 
         <a href="/evento?e=@evento.idEvento" class="eventoClick">
             <div class="evento">
-                <img src="http://localhost:3000/eventoLogos/@evento.Logo" class="eventoFoto" />
+                <img src="http://localhost:3000/eventoLogo/@evento.Logo" class="eventoFoto" />
                 <div class="eventoContentWrapper" style="width: 100%;">
                     <div class="eventoContent">
                         <div class="eventoNome"> <b> @evento.Nome </b> </div>

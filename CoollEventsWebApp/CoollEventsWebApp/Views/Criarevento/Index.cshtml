@@ -1,0 +1,236 @@
+﻿@model List<CoollEventsWebApp.Models.Tipo>
+
+@{
+    ViewBag.Title = "CoolEvents: Criar eventos!";
+    Layout = "~/Views/coollayout.cshtml";
+}
+<style>
+    #bg { 
+        width: 100vw;
+        min-height: 100vh;
+        background: url("/Resources/img/eventobg.jpg") center center no-repeat fixed;
+        padding-top: 8vh;
+        padding-bottom: 8vh;
+    }
+
+    #formContainer {
+        margin: auto;
+        width: 50%;
+        min-height: 80vh;
+        background-color: white;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        border-radius: 2px;
+    }
+
+    form { 
+        margin: auto;
+        width: 80%;
+        padding-top: 5vh;
+        padding-bottom: 5vh;
+    }
+
+
+    .input-text {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        margin-bottom: 5vh;
+    }
+
+        .input-text label {
+            font-family: sans-serif;
+            font-size: 1rem;
+            padding-bottom: 1vh;
+            color: #0094ff;
+        }
+
+        .input-text input {
+            border: none;
+            border-bottom: 1px #272727 solid;
+            border-radius: 0;
+            box-shadow: none;
+            font-family: sans-serif;
+            font-size: 1.2rem;
+            color: #272727;
+        }
+
+            .input-text input:focus {
+                outline: none;
+                box-shadow: none;
+            }
+
+    input[type=submit] {
+        color: white;
+        text-decoration: none;
+        font-size: 1.4rem;
+        border: none;
+        font-family: sans-serif;
+        background-color: #db6aab;
+        padding: 1.2vh 5vw;
+        border-radius: 5px;
+        transition: all .4s ease-in-out;
+    }
+
+        input[type=submit]:active {
+            outline: none;
+        }
+
+        input[type=submit]:hover {
+            background-color: #0067ca;
+        }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+</style>
+<div id="bg">
+    <div id="formContainer">
+        @using (Html.BeginForm("Index", "Criarevento", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <h1 style="color: #db6aab;font-family: sans-serif; font-size: 1.8rem;width: 100%; text-align: center; margin-bottom: 7vh;"> Criar evento</h1>
+
+            <div class="input-text">
+                <label> Nome do evento </label>
+                <input type="text" name="Nome" id="Nome" style="margin: 0;" required />
+            </div>
+            <div class="input-text">
+                <label> Tipo de evento </label>
+                <select id="TipoEvento" name="TipoEvento" style="font-size: 1rem; color: black; box-shadow: none;" required>
+                    <option value="none">Selecionar</option>
+                    @foreach (CoollEventsWebApp.Models.Tipo tipo in Model)
+                    {
+                        <option value="@tipo.Id">@tipo.Nome</option>
+                    }
+                </select>
+            </div>
+
+            <div class="input-text">
+                <label> Data </label>
+                <input type="date" name="DataEvento" id="DataEvento" required />
+            </div>
+            <div class="input-text">
+                <label> Hora ínicio </label>
+                <input type="time" name="Inicio" id="Inicio" required />
+            </div>
+            <div class="input-text">
+                <label> Hora Fim </label>
+                <input type="time" name="Fim" id="Fim" required />
+            </div>
+            <div class="input-text">
+                <label> Evento aberto ao publico? </label>
+                @*@Html.CheckBoxFor(m => Model.Publico)*@
+                <input data-val="true" data-val-required="O campo Publico é obrigatório." id="Publico" name="Publico" type="checkbox" value="true">
+                <input name="Publico" type="hidden" value="false">
+            </div>
+            <div class="input-text">
+                <label> Numero máximo de pessoas </label>
+                <input type="number" name="MaxPessoas" id="MaxPessoas" value="0" required />
+                <small> deixe 0 para ilimitado </small>
+            </div>
+            <div class="input-text">
+                <label> Descrição </label>
+                @*@Html.TextAreaFor(m => Model.Descricao, new { required = "required" })*@
+                <textarea cols="20" id="Descricao" name="Descricao" required="required" rows="2"></textarea>
+            </div>
+            <div class="input-text">
+                <label> Logo </label>
+                <input type="file" name="Logo" id="Logo" required style="border: none;" />
+            </div>
+            <div class="input-text">
+                <label> Foto de fundo </label>
+                <input type="file" name="Background" id="Background" required style="border: none;" />
+            </div>
+            <div class="input-text">
+                <label> UF: </label>
+                <select id="UF" name="UF" style="font-size: 1rem; color: black; box-shadow: none;">
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                    <option value="EX">Estrangeiro</option>
+                </select>
+            </div>
+
+            <div class="input-text">
+                <label> Cidade </label>
+                <input type="text" name="Cidade" id="Cidade" required />
+            </div>
+
+            <div class="input-text" style="width: 35%">
+                <label> CEP </label>
+                <input type="number" name="CEP" id="CEP" required />
+            </div>
+
+            <div class="input-text">
+                <label> Bairro </label>
+                <input type="text" name="Bairro" id="Bairro" required />
+            </div>
+
+            <div class="input-text">
+                <label> Logradouro </label>
+                <input type="text" name="Logradouro" id="Logradouro" required />
+            </div>
+            <div class="input-text">
+                <label> Numero </label>
+                <input type="number" name="Numero" id="Numero" required style="width: 20%" />
+            </div>
+            <div class="input-text">
+                <label> Complemento </label>
+                <input type="text" name="Complemento" id="Complemento" required />
+            </div>
+
+            <input type="submit" value="Criar evento!" style="width: 50%; margin-left: 25%" />
+        }
+    </div>
+</div>
+
+<script>
+    $("#CEP").change(function () {
+
+        $.ajax({
+
+            url: 'https://viacep.com.br/ws/' + $(this).val() + '/json/unicode/',
+
+            dataType: 'json',
+
+            success: function (resposta) {
+
+                $("#Logradouro").val(resposta.logradouro);
+                $("#Complemento").val(resposta.complemento);
+                $("#Bairro").val(resposta.bairro);
+                $("#Cidade").val(resposta.localidade);
+                $("#Numero").focus();
+
+            }
+        });
+    });
+
+    function CheckForm(){
+
+    }
+</script>

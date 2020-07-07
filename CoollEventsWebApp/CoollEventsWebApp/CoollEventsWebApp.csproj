@@ -177,6 +177,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AtualizarAvatarController.cs" />
     <Compile Include="Controllers\ContatoController.cs" />
+    <Compile Include="Controllers\ConvidadosController.cs" />
+    <Compile Include="Controllers\CriareventoController.cs" />
     <Compile Include="Controllers\EditarController.cs" />
     <Compile Include="Controllers\EntrarController.cs" />
     <Compile Include="Controllers\ErroController.cs" />
@@ -220,6 +222,8 @@
     <Content Include="Views\AtualizarAvatar\Index.cshtml" />
     <Content Include="Views\Contato\Index.cshtml" />
     <Content Include="Views\Eventos\Index.cshtml" />
+    <Content Include="Views\Criarevento\Index.cshtml" />
+    <Content Include="Views\Convidados\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
