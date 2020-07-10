@@ -1,7 +1,8 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Coolevents: Convidados";
     Layout = "~/Views/coollayout.cshtml";
+    ViewBag.Style = "_trocarsenha.css";
 }
 
 <style>
@@ -21,10 +22,59 @@
         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
         border-radius: 2px;
     }
+
+    form {
+        margin: auto;
+        width: 80%;
+        padding-top: 5vh;
+        padding-bottom: 5vh;
+    }
+
+    #convidado {
+        margin-top: 10vh;
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid rgba(48, 48, 48, 0.27);
+        box-shadow: none;
+        border-radius: 0;
+        color: #121212;
+        font-size: 1.3rem;
+    }
+
+    input[type=submit] {
+        color: white;
+        text-decoration: none;
+        font-size: 1.4rem;
+        border: none;
+        font-family: sans-serif;
+        background-color: #0094ff;
+        padding: 1.2vh 5vw;
+        border-radius: 5px;
+        transition: all .4s ease-in-out;
+    }
+
+        input[type=submit]:active {
+            outline: none;
+        }
+
+        input[type=submit]:hover {
+            background-color: #0067ca;
+        }
+
+        a { 
+            margin: auto;
+        }
+
 </style>
 
 <div id="bg">
     <div id="formContainer">
-        eae
+        @using (Html.BeginForm(FormMethod.Post))
+        {
+            <input type="email" name="convidado" id="convidado" placeholder="email do convidado"/>
+            <input type="submit" name="submit" value="Convidar" />
+
+            @Html.ActionLink("Proxima etapa", "Index", "Tarefas");
+        }
     </div>
 </div>

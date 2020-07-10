@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Coolevents: Tarefas";
+    Layout = "~/Views/coollayout.cshtml";
+    ViewBag.Style = "_trocarsenha.css";
+}
+
+<style>
+
+    #imagemUploader {
+        text-align: center;
+        margin-top: 5vh;
+        font-size: 1.2rem;
+        text-decoration: underline;
+    }
+
+    #submit {
+        bottom: 0;
+    }
+
+    img {
+        width: 50%;
+        margin: auto;
+    }
+
+    #userImagem {
+        margin: auto;
+    }
+
+    #Tarefa {
+        margin-top: 10vh;
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid rgba(48, 48, 48, 0.27);
+        box-shadow: none;
+        border-radius: 0;
+    }
+</style>
+
+<div id="bg">
+    <div id="boxlogin">
+        <div id="content">
+            @using (Html.BeginForm("Index", "Tarefas", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <input type="text" name="Tarefa" id="Tarefa" placeholder="Tarefa"/>
+                <input type="submit" id="submit" value="Confirmar" />
+                @Html.ActionLink("Finalizar tarefas", "Index", "Eventos");
+            }
+        </div>
+    </div>
+</div>

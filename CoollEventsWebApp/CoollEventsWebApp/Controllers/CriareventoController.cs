@@ -15,31 +15,31 @@ namespace CoollEventsWebApp.Controllers
             if (Session["idUsuario"] == null)
                 return RedirectToAction("Index", "Index");
 
-            
-
             return View(Evento.GetTipos());
         }
 
         [HttpPost]
         public ActionResult Index(Evento evento) 
         {
-
             try
             {
+
                 evento.Cadastrar();
+
                 if (evento.Publico)
                 {
-
-                    return RedirectToAction("Index", "publico");
+                    return RedirectToAction("Index", "Eventos");
                 }
+
                 else
                 {
                     Session["evento"] = evento;
                     return RedirectToAction("Index", "Convidados");
                 }
             }
+
             catch (Exception ex)
-            {
+            { 
 
                 return RedirectToAction("Index", "Erro");
             }

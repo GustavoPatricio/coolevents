@@ -37,7 +37,7 @@ namespace CoollEventsWebApp.Controllers
 
             try
             {
-                var path = Path.Combine(ConfigurationManager.AppSettings["userImagens"].ToString(), fileId);
+                var path = (@"C:\ImageProvider\public\userImagens\" +  fileId);
                 userImagem.SaveAs(path);
             }
             catch (Exception ex)

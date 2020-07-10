@@ -47,7 +47,7 @@ namespace CoollEventsWebApp.Models
             Background.SaveAs(path);
 
             BDConexao conexao = new BDConexao();
-            conexao.command.CommandText = "INSERT INTO TBL_EVENTO values (@NOME, @DATA_EVENTO, @DATA_CRIACAO, @INICIO, @FIM, @PUBLICO, @OCULTO, @MAX_PESSOAS, @DESCRICAO, @LOGO, @BACKGROUND, " +
+            conexao.command.CommandText = "INSERT INTO TBL_EVENTO OUTPUT INSERTED.ID_USUARIO values (@NOME, @DATA_EVENTO, @DATA_CRIACAO, @INICIO, @FIM, @PUBLICO, @OCULTO, @MAX_PESSOAS, @DESCRICAO, @LOGO, @BACKGROUND, " +
                 "@UF, @CIDADE, @CEP, @BAIRRO, @LOGRADOURO, @NUMERO, @COMPLEMENTO, @ID_TIPO, @ID_USUARIO)";
 
             conexao.command.Parameters.Add("@NOME", SqlDbType.VarChar).Value = Nome;
@@ -68,12 +68,13 @@ namespace CoollEventsWebApp.Models
             conexao.command.Parameters.Add("@LOGRADOURO", SqlDbType.NVarChar).Value = Logradouro;
             conexao.command.Parameters.Add("@NUMERO", SqlDbType.Int).Value = Numero;
             conexao.command.Parameters.Add("@COMPLEMENTO", SqlDbType.VarChar).Value = Complemento;
-            conexao.command.Parameters.Add("@ID_TIPO", SqlDbType.Int).Value = null;
+            conexao.command.Parameters.Add("@ID_TIPO", SqlDbType.Int).Value = TipoEvento;
             conexao.command.Parameters.Add("@ID_USUARIO", SqlDbType.Int).Value = HttpContext.Current.Session["idUsuario"];
 
             conexao.connection.Open();
-            conexao.command.ExecuteNonQuery();
+            int idUsuario = (int) conexao.command.ExecuteScalar();
             conexao.connection.Close();
+            Id = idUsuario;
 
         }
 

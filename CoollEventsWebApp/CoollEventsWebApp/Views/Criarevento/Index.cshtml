@@ -63,6 +63,7 @@
         color: white;
         text-decoration: none;
         font-size: 1.4rem;
+
         border: none;
         font-family: sans-serif;
         background-color: #db6aab;
@@ -98,7 +99,7 @@
             <div class="input-text">
                 <label> Tipo de evento </label>
                 <select id="TipoEvento" name="TipoEvento" style="font-size: 1rem; color: black; box-shadow: none;" required>
-                    <option value="none">Selecionar</option>
+                    <option value="none" selected>Selecionar</option>
                     @foreach (CoollEventsWebApp.Models.Tipo tipo in Model)
                     {
                         <option value="@tipo.Id">@tipo.Nome</option>
@@ -110,38 +111,46 @@
                 <label> Data </label>
                 <input type="date" name="DataEvento" id="DataEvento" required />
             </div>
+            
             <div class="input-text">
                 <label> Hora ínicio </label>
                 <input type="time" name="Inicio" id="Inicio" required />
             </div>
+            
             <div class="input-text">
                 <label> Hora Fim </label>
                 <input type="time" name="Fim" id="Fim" required />
             </div>
+            
             <div class="input-text">
                 <label> Evento aberto ao publico? </label>
                 @*@Html.CheckBoxFor(m => Model.Publico)*@
                 <input data-val="true" data-val-required="O campo Publico é obrigatório." id="Publico" name="Publico" type="checkbox" value="true">
                 <input name="Publico" type="hidden" value="false">
             </div>
+
             <div class="input-text">
                 <label> Numero máximo de pessoas </label>
-                <input type="number" name="MaxPessoas" id="MaxPessoas" value="0" required />
+                <input type="number" name="MaxPessoas" step="1" id="MaxPessoas" value="0" required />
                 <small> deixe 0 para ilimitado </small>
             </div>
+
             <div class="input-text">
                 <label> Descrição </label>
                 @*@Html.TextAreaFor(m => Model.Descricao, new { required = "required" })*@
                 <textarea cols="20" id="Descricao" name="Descricao" required="required" rows="2"></textarea>
             </div>
+
             <div class="input-text">
                 <label> Logo </label>
                 <input type="file" name="Logo" id="Logo" required style="border: none;" />
             </div>
+
             <div class="input-text">
                 <label> Foto de fundo </label>
                 <input type="file" name="Background" id="Background" required style="border: none;" />
             </div>
+
             <div class="input-text">
                 <label> UF: </label>
                 <select id="UF" name="UF" style="font-size: 1rem; color: black; box-shadow: none;">
@@ -195,16 +204,19 @@
                 <label> Logradouro </label>
                 <input type="text" name="Logradouro" id="Logradouro" required />
             </div>
+
             <div class="input-text">
                 <label> Numero </label>
                 <input type="number" name="Numero" id="Numero" required style="width: 20%" />
             </div>
+
             <div class="input-text">
                 <label> Complemento </label>
                 <input type="text" name="Complemento" id="Complemento" required />
             </div>
 
-            <input type="submit" value="Criar evento!" style="width: 50%; margin-left: 25%" />
+            <input type="submit" value="Criar evento!" onclick="return CheckForm()" style="width: 50%; margin-left: 25%" />
+
         }
     </div>
 </div>
@@ -230,7 +242,45 @@
         });
     });
 
-    function CheckForm(){
+    $("#DataEvento").change(() => {
+        console.log($("#DataEvento").val());
+    });
 
+    function CheckForm(){
+        if ($("#TipoEvento option:selected").val() == "none") {
+            alert("Selecione um tipo de evento");
+            return false;
+        }
+
+        var input = $("#DataEvento").val();
+        var DateToday = new Date();
+
+        if (input.substring(0, 4) < DateToday.getFullYear()) {
+            alert("data inválida");
+            return false;
+        }
+
+        if (input.substring(0, 4) == DateToday.getFullYear()) {
+            console.log("ano igual");
+            if (input.substring(5, 7) < DateToday.getMonth()) {
+                alert("data inválida");
+                return false;
+            }
+            if (input.substring(5, 7) == DateToday.getMonth()) {
+                console.log("mes igual");
+                if (input.substring(8) < DateToday.getDate()) {
+                    alert("data inválida");
+                    return false;
+                }
+                if (input.substring(8) == DateToday.getDate()) {
+                    console.log("dia igual");
+                    alert("O evento deve ter no mínimo 1 dia de antecedência");
+                    return false;
+                }
+            }
+        }
+
+        return true;
+        
     }
 </script>

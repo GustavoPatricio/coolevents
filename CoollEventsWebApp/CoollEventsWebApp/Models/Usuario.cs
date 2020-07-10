@@ -136,7 +136,6 @@ namespace CoollEventsWebApp.Models
                     "@EMAIL = @_EMAIL, " +
                     "@NASC = @_NASC, " +
                     "@GENERO = @_SEXO, " +
-                    "@FOTO = @_FOTO, " +
                     "@APELIDO = @_APELIDO, " +
                     "@CIVIL = @_CIVIL, " +
                     "@UF = @_UF, " +
@@ -155,7 +154,6 @@ namespace CoollEventsWebApp.Models
                 conexao.command.Parameters.Add("@_EMAIL", SqlDbType.VarChar).Value = usuario.Email;
                 conexao.command.Parameters.Add("@_NASC", SqlDbType.Date).Value = usuario.DataNascimento;
                 conexao.command.Parameters.Add("@_SEXO", SqlDbType.Char).Value = usuario.Sexo;
-                conexao.command.Parameters.Add("@_FOTO", SqlDbType.VarChar).Value = usuario.Foto;
                 conexao.command.Parameters.Add("@_APELIDO", SqlDbType.VarChar).Value = usuario.Apelido;
                 conexao.command.Parameters.Add("@_CIVIL", SqlDbType.VarChar).Value = usuario.Civil;
                 conexao.command.Parameters.Add("@_UF", SqlDbType.Char).Value = usuario.UF;
