@@ -49,7 +49,7 @@ namespace CoollEventsWebApp.Models {
             List<EventoTemplate> eventos = new List<EventoTemplate>();
 
             BDConexao conexao = new BDConexao();
-            conexao.command.CommandText = "Select id_evento, nome, data_evento, descricao, cidade, UF from tbl_evento where oculto = 0 and publico = 1 and nome like @NOME";
+            conexao.command.CommandText = "Select id_evento, nome, logo, data_evento, descricao, cidade, UF from tbl_evento where oculto = 0 and publico = 1 and nome like @NOME";
             conexao.command.Parameters.Add("@NOME", SqlDbType.VarChar).Value = "%" + nome + "%";
             conexao.connection.Open();
             SqlDataReader dr = conexao.command.ExecuteReader();
@@ -59,12 +59,14 @@ namespace CoollEventsWebApp.Models {
                 while (dr.Read())
                 {
                     EventoTemplate evento = new EventoTemplate();
+
                     evento.idEvento = dr.GetInt32(0);
                     evento.Nome = dr.GetString(1);
-                    evento.Data_evento = Convert.ToString(dr.GetDateTime(2));
-                    evento.Descricao = dr.GetString(3);
-                    evento.Cidade = dr.GetString(4);
-                    evento.UF = dr.GetString(5);
+                    evento.Logo = dr.GetString(2);
+                    evento.Data_evento = Convert.ToString(dr.GetDateTime(3));
+                    evento.Descricao = dr.GetString(4);
+                    evento.Cidade = dr.GetString(5);
+                    evento.UF = dr.GetString(6);
 
                     //adiciona evento
                     eventos.Add(evento);

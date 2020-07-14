@@ -19,11 +19,22 @@ namespace CoollEventsWebApp.Controllers
         [HttpPost]
         public ActionResult Index(string Tarefa) {
 
-            Tarefas tarefa = new Tarefas();
-            tarefa.Tarefa = Tarefa;
-            tarefa.Cadastrar();
+            try
+            {
+                var evento = (Evento)Session["evento"];
+                Tarefas tarefa = new Tarefas();
+                tarefa.Tarefa = Tarefa;
+                tarefa.Id_evento = evento.Id;
+                tarefa.Cadastrar();
+                Response.Write("<script> alert('Tarefa cadastrada com sucesso :)') </script>");
+                return View();
+            }
 
-            return View();
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index", "Erro");
+            }
+
         }
     }
 }

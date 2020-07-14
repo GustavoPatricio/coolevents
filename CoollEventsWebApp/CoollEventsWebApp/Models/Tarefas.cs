@@ -13,12 +13,17 @@ namespace CoollEventsWebApp.Models {
         public int Id_convidado { get; set; }
 
         public void Cadastrar() {
+
             BDConexao conexao = new BDConexao();
 
-            conexao.command.CommandText = "INSERT INTO TBL_TAREFA VALUES (@TAREFA, @ID_EVENTO)";
+            conexao.command.CommandText = "INSERT INTO TBL_TAREFA(TAREFA, ID_EVENTO) VALUES (@TAREFA, @ID_EVENTO)";
             conexao.command.Parameters.Add("@TAREFA", SqlDbType.VarChar).Value = Tarefa;
-            conexao.command.Parameters.Add("@ID_EVENTO", SqlDbType.Int).Value = HttpContext.Current.Session["evento"];
-        }
+            conexao.command.Parameters.Add("@ID_EVENTO", SqlDbType.Int).Value = Id_evento;
 
+            conexao.connection.Open();
+            conexao.command.ExecuteNonQuery();
+            conexao.connection.Close();
+
+        }
     }
 }

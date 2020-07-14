@@ -42,7 +42,7 @@ namespace CoollEventsWebApp.Models
 
                 BDConexao conexao = new BDConexao();
 
-                conexao.command.CommandText = "INSERT INTO tbl_USUARIO values (@NOME, @SOBRENOME, @EMAIL, @SENHA, @NASC, @GENERO, null, @APELIDO, @CIVIL, @UF, " +
+                conexao.command.CommandText = "INSERT INTO tbl_USUARIO values (@NOME, @SOBRENOME, @EMAIL, @SENHA, @NASC, @GENERO, @FOTO, @APELIDO, @CIVIL, @UF, " +
                     "@CIDADE, @CEP, @BAIRRO, @LOGRADOURO, @NUMERO, @COMPLEMENTO, @DESCRICAO, @PONTUACAO)";
 
                 conexao.command.Parameters.Add("@NOME", SqlDbType.NVarChar).Value = Nome;
@@ -51,6 +51,7 @@ namespace CoollEventsWebApp.Models
                 conexao.command.Parameters.Add("@SENHA", SqlDbType.NVarChar).Value = CoolEventsEncrypter.Encrypt(Senha);
                 conexao.command.Parameters.Add("@NASC", SqlDbType.Date).Value = DataNascimento;
                 conexao.command.Parameters.Add("@GENERO", SqlDbType.Char).Value = Sexo;
+                conexao.command.Parameters.Add("@FOTO", SqlDbType.NVarChar).Value = "";
                 conexao.command.Parameters.Add("@APELIDO", SqlDbType.NVarChar).Value = Apelido;
                 conexao.command.Parameters.Add("@CIVIL", SqlDbType.NVarChar).Value = Civil;
                 conexao.command.Parameters.Add("@UF", SqlDbType.NVarChar).Value = UF;

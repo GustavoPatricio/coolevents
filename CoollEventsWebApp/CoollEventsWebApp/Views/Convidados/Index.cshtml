@@ -61,9 +61,10 @@
             background-color: #0067ca;
         }
 
-        a { 
-            margin: auto;
-        }
+    #proxima {
+        font-size: 1.1rem;
+        color: #0067ca;
+    }
 
 </style>
 
@@ -74,7 +75,7 @@
             <input type="email" name="convidado" id="convidado" placeholder="email do convidado"/>
             <input type="submit" name="submit" value="Convidar" />
 
-            @Html.ActionLink("Proxima etapa", "Index", "Tarefas");
+            @Html.ActionLink("Proxima etapa", "Index", "Tarefas", null , new { @id = "proxima" , style="margin: auto"});
         }
     </div>
 </div>

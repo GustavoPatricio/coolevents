@@ -1,0 +1,182 @@
+﻿@model List<CoollEventsWebApp.Models.Convites>
+
+@{
+    ViewBag.Title = "Coollevents: meus convites";
+    Layout = "~/Views/coollayout.cshtml";
+}
+
+<style>
+    #bg {
+        width: 100vw;
+        min-height: 100vh;
+        background-color: #5da2e4;
+        position: relative;
+        padding-top: 5vh;
+    }
+
+    #SearchWrapper {
+        margin: auto;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        border-radius: 2px;
+        width: 80%;
+        height: 7vh;
+        background-color: white;
+        display: flex;
+    }
+
+        #SearchWrapper img {
+            float: left;
+            height: 4vh;
+            align-self: center;
+            margin-left: 2vw;
+            cursor: pointer;
+            transition: all .1s ease-in-out;
+        }
+
+            #SearchWrapper img:hover {
+                transform: rotate(20deg);
+            }
+
+        #SearchWrapper input {
+            display: flex;
+            border: none;
+            border-radius: 0;
+            margin: 0;
+            box-shadow: none;
+            border-bottom: 1px solid #808080;
+            font-size: 1.2rem;
+            padding: 0;
+            padding-bottom: 5px;
+            padding-left: 5px;
+            margin-top: auto;
+            margin-bottom: 2vh;
+            margin-left: 2vw;
+            width: 70%;
+        }
+
+    #EventosWrapper {
+        margin: auto;
+        margin-top: 5vh;
+        width: 80%;
+        min-height: 40vh;
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .eventoClick {
+        text-decoration: none;
+        width: 60%;
+        height: 14vh;
+        color: #171717;
+        transition: all .4s ease-in-out;
+        margin-bottom: 3vh;
+    }
+
+        .eventoClick:hover {
+            color: #171717;
+            text-decoration: none;
+            transform: translateX(2%);
+        }
+
+    .evento {
+        border-radius: 2px;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        display: flex;
+        align-content: center;
+    }
+
+        .evento img {
+            margin-left: 1vw;
+            height: 80%;
+            align-self: center;
+        }
+
+        .evento .eventoContentWrapper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .evento .eventoContent {
+            padding: 1.5vh 2vw;
+        }
+
+        .evento .eventoNome {
+        }
+
+        .evento .eventoData {
+            margin-top: .5vh;
+        }
+
+        .evento .eventoDescricao {
+            margin-top: .5vh;
+        }
+
+        .evento .eventoCidadeUF {
+            margin-top: .5vh;
+        }
+
+    .eventoButtons { 
+        display: flex;
+        flex-direction: column;
+    }
+
+    .linkss a {
+        padding: 1vh 2vw;
+        margin-right: 3vw;
+        text-decoration: none;
+        border-radius: 3px;
+        transition: all .2s ease-in-out;
+    }
+
+    .linkss a:hover { 
+        text-decoration: none;
+        color: white;
+    }
+
+    .verevento { 
+        background-color: #9939cc;
+        color: white;
+        
+    }
+
+        .verevento:hover {
+            background-color: #66218a;
+            color: white;
+        }
+
+    .aceitarconvite {
+        background-color: #37ce64;
+        color: white;
+    }
+
+        .aceitarconvite:hover {
+            background-color: #30a954;
+            color: white;
+        }
+</style>
+
+<div id="bg">
+    <div id="EventosWrapper">
+        @foreach (CoollEventsWebApp.Models.Convites Convite in Model) {
+        <div href="/evento?e=" class="eventoClick">
+            <div class="evento">
+                <img src="http://localhost:3000/eventoLogo/@Convite.Logo" class="eventoFoto" />
+                <div class="eventoContentWrapper" style="width: 100%;">
+                    <div class="eventoContent">
+                        <div class="eventoNome"> <b>@Convite.Nome  </b> </div>
+                        <div class="eventoData">  <i>@Convite.DataEvento.ToString() </i> </div>
+                        <div style="margin-top: 2vh;" class="linkss">
+                            <a href="/evento?e=@Convite.Id_evento" class="verevento">Ver evento</a>
+                            <a href="/aceitarconvite?evento=@Convite.Id_evento" class="aceitarconvite">Aceitar convite</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

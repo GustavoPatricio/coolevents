@@ -9,7 +9,7 @@
     #bg {
         width: 100vw;
         min-height: 100vh;
-        background-color: #dd70c3;
+        background: url("/Resources/img/eventobg.jpg") center center no-repeat fixed;
         position: relative;
         padding-top: 5vh;
     }
@@ -153,17 +153,20 @@
 </style>
 
 <div id="bg">
+
+    @if(Session["idUsuario"] != null) {
     <div id="Funcoes">
-        <a href="/criarEventos">
+        <a href="/criarevento">
             Criar evento    
         </a>
-        <a href="/criarEventos">
+        <a href="/meusconvites">
             Meus convites
         </a>
-        <a href="/criarEventos">
+        <a href="/enquetes">
             Enquetes
         </a>
     </div>
+    }
 
     <div id="SearchWrapper">
         <img src="/Resources/img/lupa.png" id="lupa"/>

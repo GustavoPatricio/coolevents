@@ -119,7 +119,9 @@
     <Content Include="Resources\img\blog\img2.jpg" />
     <Content Include="Resources\img\blog\img3.jpg" />
     <Content Include="Resources\img\blog\img4.jpg" />
+    <Content Include="Resources\img\convitesuc.png" />
     <Content Include="Resources\img\Erro.svg" />
+    <Content Include="Resources\img\eventobg.jpg" />
     <Content Include="Resources\img\favicon.ico" />
     <Content Include="Resources\img\Gabriela.jpeg" />
     <Content Include="Resources\img\glyphicons-halflings.png" />
@@ -147,6 +149,7 @@
     <Content Include="Resources\img\team\img-3.jpg" />
     <Content Include="Resources\img\team\img-4.jpg" />
     <Content Include="Resources\img\team\img-5.jpg" />
+    <Content Include="Resources\img\usericon.png" />
     <Content Include="Resources\img\works\1.png" />
     <Content Include="Resources\img\works\10.png" />
     <Content Include="Resources\img\works\2.png" />
@@ -175,17 +178,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\aceitarconviteController.cs" />
     <Compile Include="Controllers\AtualizarAvatarController.cs" />
     <Compile Include="Controllers\ContatoController.cs" />
     <Compile Include="Controllers\ConvidadosController.cs" />
+    <Compile Include="Controllers\ConviteAceitoController.cs" />
     <Compile Include="Controllers\CriareventoController.cs" />
     <Compile Include="Controllers\EditarController.cs" />
     <Compile Include="Controllers\EntrarController.cs" />
     <Compile Include="Controllers\ErroController.cs" />
+    <Compile Include="Controllers\EventoController.cs" />
     <Compile Include="Controllers\EventosController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Controllers\ManutencaoController.cs" />
+    <Compile Include="Controllers\meusconvitesController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
     <Compile Include="Controllers\registrarController.cs" />
     <Compile Include="Controllers\SobreController.cs" />
@@ -196,6 +203,7 @@
     </Compile>
     <Compile Include="Models\BDConexao.cs" />
     <Compile Include="Models\Convidado.cs" />
+    <Compile Include="Models\Convites.cs" />
     <Compile Include="Models\CoolEventsEncrypter.cs" />
     <Compile Include="Models\CoolEventsMailer.cs" />
     <Compile Include="Models\Evento.cs" />
@@ -228,6 +236,8 @@
     <Content Include="Views\Criarevento\Index.cshtml" />
     <Content Include="Views\Convidados\Index.cshtml" />
     <Content Include="Views\Tarefas\Index.cshtml" />
+    <Content Include="Views\meusconvites\index.cshtml" />
+    <Content Include="Views\ConviteAceito\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -237,6 +247,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\aceitarconvite\" />
+    <Folder Include="Views\Evento\" />
     <Folder Include="Views\Logout\" />
   </ItemGroup>
   <PropertyGroup>
