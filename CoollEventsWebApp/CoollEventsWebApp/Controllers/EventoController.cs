@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoollEventsWebApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,10 +14,7 @@ namespace CoollEventsWebApp.Controllers
         {
             if (id == null) return RedirectToAction("Index", "Eventos");
 
-
-
-
-            return View();
+            return View(EventoView.GetEventoById((int) id));
         }
     }
 }

@@ -208,6 +208,7 @@
     <Compile Include="Models\CoolEventsMailer.cs" />
     <Compile Include="Models\Evento.cs" />
     <Compile Include="Models\EventoTemplate.cs" />
+    <Compile Include="Models\EventoView.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Tarefas.cs" />
     <Compile Include="Models\Usuario.cs" />
@@ -238,6 +239,7 @@
     <Content Include="Views\Tarefas\Index.cshtml" />
     <Content Include="Views\meusconvites\index.cshtml" />
     <Content Include="Views\ConviteAceito\Index.cshtml" />
+    <Content Include="Views\Evento\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -248,7 +250,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\aceitarconvite\" />
-    <Folder Include="Views\Evento\" />
     <Folder Include="Views\Logout\" />
   </ItemGroup>
   <PropertyGroup>

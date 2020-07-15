@@ -78,20 +78,6 @@ namespace CoollEventsWebApp.Models
 
         }
 
-        public void GetEventoById(int idEvento) {
-            BDConexao conexao = new BDConexao();
-            conexao.command.CommandText = @"SELECT 
-                NOME, DATA_EVENTO, INICIO, FIM, MAX_PESSOAS, 
-                (SELECT COUNT(*) FROM tbl_convidado WHERE ID_EVENTO = @IDEVENTO) AS [PESSOAS CONFIRMADAS], 
-                DESCRICAO, LOGO, BACKGROUND, UF, CIDADE, CEP, BAIRRO, LOGRADOURO, NUMERO,
-                COMPLEMENTO, (SELECT TIPO FROM tbl_tipoevento WHERE ID_TIPO = (SELECT ID_TIPO FROM TBL_EVENTO WHERE ID_EVENTO = @IDEVENTO)) AS [TIPO EVENTO]
-                FROM tbl_evento where id_evento = @IDEVENTO";
-
-            conexao.command.Parameters.Add("@IDEVENTO", SqlDbType.VarChar).Value = idEvento;
-
-            //continuar com data reader
-        }
-
         public static List<Tipo> GetTipos() {
             List<Tipo> lista_de_tipos = new List<Tipo>();
 

@@ -1,0 +1,56 @@
+﻿@model CoollEventsWebApp.Models.EventoView
+
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/coollayout.cshtml";
+}
+    <style>
+
+    #bg {
+        width: 100vw;
+        min-height: 100vh;
+        background: url("http://localhost:3000/eventoBackground/@Model.Background") center center no-repeat fixed;
+        background-size: cover;
+        padding-top: 5vh;
+    }
+
+    #Evento {
+        min-width: 40vw;
+        max-width: 40vw;
+        min-height: 80vh;
+        margin: auto;
+        background-color: white;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        padding: 5vh 4vw;
+    }
+
+    #Background {
+        width: 100%;
+        display: flex;
+    }
+
+    #Background img{
+        height: 30vh;
+        width: auto;
+        margin: auto;
+        align-self: center;
+    }
+
+    #Logo { 
+        margin: auto;
+        width: fit-content;
+    }
+
+    #Logo img {
+        width: 30%;
+    }
+
+    </style>
+
+<div id="bg">
+    <div id="Evento">
+        <div id="Logo">
+            <img src="http://localhost:3000/eventoLogo/@Model.Logo" />
+        </div>
+    </div>
+</div>
