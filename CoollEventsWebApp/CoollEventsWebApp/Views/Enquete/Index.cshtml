@@ -1,0 +1,167 @@
+﻿@model CoollEventsWebApp.Models.Enquete
+
+@{
+    ViewBag.Title = "Enquete: " + Model.Titulo;
+    Layout = "~/Views/coollayout.cshtml";
+}
+
+
+<style>
+
+    #bg {
+        width: 100vw;
+        min-height: 100vh;
+        background: url("/Resources/img/enquetefundo.jpg") center center no-repeat fixed;
+        background-size: cover;
+        padding-top: 5vh;
+        padding-bottom: 10vh;
+    }
+
+    #Evento {
+        min-width: 40vw;
+        max-width: 40vw;
+        min-height: 80vh;
+        margin: auto;
+        background-color: white;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        padding: 5vh 4vw;
+    }
+
+    #Background {
+        width: 100%;
+        display: flex;
+    }
+
+    #Background img{
+        height: 30vh;
+        width: auto;
+        margin: auto;
+        align-self: center;
+    }
+
+        #Logo {
+            margin: auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        #inside {
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        #Logo img {
+            width: 30%;
+            margin: auto;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            flex-direction: column;
+            margin-right: 4vw;
+        }
+
+    .content .title {
+        font-size: 1.3rem;
+        font-family: sans-serif;
+        color: #006bff;
+    }
+
+            .content .value {
+                margin-top: 2vh;
+                font-size: 1.2rem;
+                font-family: sans-serif;
+                color: #161616;
+            }
+
+    #enviar { 
+        background: none;
+        border: 1px solid #161616;
+        transition: all .2s ease-in-out;
+        width: 30%;
+        border-radius: 3px;
+    }
+
+        #enviar:hover {
+            background: #161616;
+            color: white;
+        }
+
+</style>
+@using (Html.BeginForm("Index", "Enquete", new { @idEnquete = Model.Id, @Pontuacao = Model.Valor}, FormMethod.Post, null)) {
+<div id="bg">
+    <div id="Evento">
+        <div id="Logo">
+            <div id="inside" style="width: fit-content">
+                <img src="http://localhost:3000/enqueteLogo/@Model.Imagem" />
+                <div style="text-align: center; font-size: 1.4rem; font-family: sans-serif; margin-top: 4vh;"> @Model.Titulo </div>
+            </div>
+        </div>
+        <div style="width: 100%; margin-top: 5vh; display: flex;">
+            <div class="content">
+                <div class="value"> @Model.Texto </div>
+            </div>
+        </div>
+        <div style="width: 100%; margin-top: 5vh; display: flex;">
+
+            <div class="content">
+                <div class="title"> Prazo </div>
+                <div class="value"> @Model.Prazo.ToString().Substring(0, 10) </div>
+            </div>
+            <div class="content">
+                <div class="title"> Pontuação da enquete </div>
+                <div class="value"> @Model.Valor </div>
+                
+            </div>
+        </div>
+        <div>
+            <div style="width: 100%; margin-top: 5vh; display: flex;">
+                <div class="content">
+                    <div class="title"> @Model.QUESTAO_A</div>
+                </div>
+            </div>
+            <div style="width: 100%; margin-top: 2vh; display: flex;">
+                <div class="content">
+                    <div class="value" style="display: flex;  font-size: 1.5rem;"> @Html.RadioButtonFor(m => m.Resposta.QUESTAO_A, "A") &nbsp; <span style="font-family: sans-serif">@Html.Label(Model.ALTERNATIVA_AA)</span></div>
+                </div>
+                <div class="content">
+                    <div class="value" style="display: flex;  font-size: 1.5rem;"> @Html.RadioButtonFor(m => m.Resposta.QUESTAO_A, "B") &nbsp; <span style="font-family: sans-serif">@Html.Label(Model.ALTERNATIVA_AB)</span></div>
+                </div>
+                <div class="content">
+                    <div class="value" style="display: flex;  font-size: 1.5rem;"> @Html.RadioButtonFor(m => m.Resposta.QUESTAO_A, "C") &nbsp; <span style="font-family: sans-serif">@Html.Label(Model.ALTERNATIVA_AC)</span></div>
+                </div>
+                <div class="content">
+                    <div class="value" style="display: flex;  font-size: 1.5rem;"> @Html.RadioButtonFor(m => m.Resposta.QUESTAO_A, "D") &nbsp; <span style="font-family: sans-serif">@Html.Label(Model.ALTERNATIVA_AD)</span></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div style="width: 100%; margin-top: 5vh; display: flex;">
+                <div class="content">
+                    <div class="title"> @Model.QUESTAO_B</div>
+                </div>
+            </div>
+            <div style="width: 100%; margin-top: 2vh; display: flex;">
+                <div class="content">
+                    <div class="value" style="display: flex;  font-size: 1.5rem;"> @Html.RadioButtonFor(m => m.Resposta.QUESTAO_B, "A") &nbsp; <span style="font-family: sans-serif">@Html.Label(Model.ALTERNATIVA_BA)</span></div>
+                </div>
+                <div class="content">
+                    <div class="value" style="display: flex;  font-size: 1.5rem;"> @Html.RadioButtonFor(m => m.Resposta.QUESTAO_B, "B") &nbsp; <span style="font-family: sans-serif">@Html.Label(Model.ALTERNATIVA_BB)</span></div>
+                </div>
+                <div class="content">
+                    <div class="value" style="display: flex;  font-size: 1.5rem;"> @Html.RadioButtonFor(m => m.Resposta.QUESTAO_B, "C") &nbsp; <span style="font-family: sans-serif">@Html.Label(Model.ALTERNATIVA_BC)</span></div>
+                </div>
+                <div class="content">
+                    <div class="value" style="display: flex;  font-size: 1.5rem;"> @Html.RadioButtonFor(m => m.Resposta.QUESTAO_B, "D") &nbsp; <span style="font-family: sans-serif">@Html.Label(Model.ALTERNATIVA_BD)</span></div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 100%; margin-top: 5vh; display: flex; justify-content: center">
+            <input type="submit" value="Enviar" id="enviar"/>
+        </div>
+    </div>
+</div>
+}

@@ -1,7 +1,7 @@
 ﻿@model CoollEventsWebApp.Models.EventoView
 
 @{
-    ViewBag.Title = "";
+    ViewBag.Title = Model.Nome;
     Layout = "~/Views/coollayout.cshtml";
 }
     <style>
@@ -12,6 +12,7 @@
         background: url("http://localhost:3000/eventoBackground/@Model.Background") center center no-repeat fixed;
         background-size: cover;
         padding-top: 5vh;
+        padding-bottom: 10vh;
     }
 
     #Evento {
@@ -36,21 +37,140 @@
         align-self: center;
     }
 
-    #Logo { 
-        margin: auto;
-        width: fit-content;
+        #Logo {
+            margin: auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        #inside { 
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        #Logo img {
+            width: 30%;
+            margin: auto;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            flex-direction: column;
+            margin-right: 4vw;
+        }
+
+    .content .title { 
+        font-size: 1.3rem;
+        font-family: sans-serif;
+        color: #006bff;
     }
 
-    #Logo img {
-        width: 30%;
-    }
+            .content .value {
+                margin-top: 2vh;
+                font-size: 1.2rem;
+                font-family: sans-serif;
+                color: #161616;
+            }
 
+        #participar {
+            border: 1px solid rgb(25, 25, 25);
+            padding: 1vh 2vw;
+            color: #161616;
+            transition: .2s all ease-in-out;
+            border-radius: 2px;
+        }
+
+            #participar:hover {
+                background: rgb(25, 25, 25);
+                color: white;
+                text-decoration: none;
+            }
     </style>
 
 <div id="bg">
     <div id="Evento">
         <div id="Logo">
-            <img src="http://localhost:3000/eventoLogo/@Model.Logo" />
+            <div id="inside" style="width: fit-content">
+                <img src="http://localhost:3000/eventoLogo/@Model.Logo" />
+                <div style="text-align: center; font-size: 1.4rem; font-family: sans-serif; margin-top: 4vh;"> @Model.Nome </div>
+            </div>
+        </div>
+        <div style="width: 100%; margin-top: 5vh; display: flex;">
+            <div class="content">
+                <div class="title"> Data </div>
+                <div class="value"> @Model.DataEvento.Substring(0, 10) </div>
+            </div>
+            <div class="content">
+                <div class="title"> Início </div>
+                <div class="value"> @Model.Inicio.ToString() </div>
+            </div>
+            <div class="content">
+                <div class="title"> Fim </div>
+                <div class="value"> @Model.Fim.ToString() </div>
+            </div>
+        </div>
+        <div style="width: 100%; margin-top: 5vh; display: flex;">
+            <div class="content">
+                <div class="title"> Máximo de pessoas permitidas </div>
+                <div class="value"> @Model.MaxPessoas </div>
+            </div>
+            <div class="content">
+                <div class="title"> Pessoas Confirmadas </div>
+                <div class="value"> @Model.PessoasConfirmadas </div>
+            </div>
+        </div>
+        <div style="width: 100%; margin-top: 5vh; display: flex;">
+            <div class="content">
+                <div class="title"> Descrição </div>
+                <div class="value"> @Model.Descricao </div>
+            </div>
+            <div class="content">
+                <div class="title"> Tipo de evento </div>
+                <div class="value"> @Model.TipoEvento </div>
+            </div>
+        </div>
+        <div style="width: 100%; margin-top: 5vh; display: flex;">
+            <div class="content">
+                <div class="title"> UF </div>
+                <div class="value"> @Model.UF</div>
+            </div>
+            <div class="content">
+                <div class="title"> Cidade </div>
+                <div class="value"> @Model.Cidade</div>
+            </div>
+        </div>
+        <div style="width: 100%; margin-top: 5vh; display: flex;">
+            <div class="content">
+                <div class="title"> UF </div>
+                <div class="value"> @Model.CEP</div>
+            </div>
+            <div class="content">
+                <div class="title"> Cidade </div>
+                <div class="value"> @Model.Bairro</div>
+            </div>
+        </div>
+        <div style="width: 100%; margin-top: 5vh; display: flex;">
+            <div class="content">
+                <div class="title"> Logradouro </div>
+                <div class="value"> @Model.Logradouro</div>
+            </div>
+            <div class="content">
+                <div class="title"> Numero </div>
+                <div class="value"> @Model.Numero</div>
+            </div>
+        </div>
+        <div style="width: 100%; margin-top: 5vh; display: flex;">
+            <div class="content">
+                <div class="title"> Complemento </div>
+                <div class="value"> @Model.Complemento</div>
+            </div>
+        </div>
+        
+        <div style="width: 100%; margin-top: 5vh; display: flex; justify-content: center">
+            <a href="/participarevento?id=@Model.Id" id="participar"> Participar </a>
         </div>
     </div>
 </div>

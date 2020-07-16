@@ -159,7 +159,11 @@
                  if ($("#Senha").val() != $("#ConfirmaSenha").val()) {
                      alert('As senhas não coincidem');
                      return false;
-                 }
+                }
+                if ($("#Senha").val().length < 8) {
+                    alert('A senha precisa de no mínimo 8 digitos');
+                    return false;
+                }
                 if ($("#DataNascimento").val().substring(6) < 1900 || $("#DataNascimento").val().substring(6) > (new Date().getFullYear() - 18)) {
                     alert('Data de nascimento inválida. OBS: É obrigatório ter mais de 18 anos.');
                     return false;

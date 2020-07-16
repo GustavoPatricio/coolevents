@@ -120,6 +120,7 @@
     <Content Include="Resources\img\blog\img3.jpg" />
     <Content Include="Resources\img\blog\img4.jpg" />
     <Content Include="Resources\img\convitesuc.png" />
+    <Content Include="Resources\img\enquetefundo.jpg" />
     <Content Include="Resources\img\Erro.svg" />
     <Content Include="Resources\img\eventobg.jpg" />
     <Content Include="Resources\img\favicon.ico" />
@@ -185,6 +186,8 @@
     <Compile Include="Controllers\ConviteAceitoController.cs" />
     <Compile Include="Controllers\CriareventoController.cs" />
     <Compile Include="Controllers\EditarController.cs" />
+    <Compile Include="Controllers\EnqueteController.cs" />
+    <Compile Include="Controllers\EnquetesController.cs" />
     <Compile Include="Controllers\EntrarController.cs" />
     <Compile Include="Controllers\ErroController.cs" />
     <Compile Include="Controllers\EventoController.cs" />
@@ -193,6 +196,7 @@
     <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Controllers\ManutencaoController.cs" />
     <Compile Include="Controllers\meusconvitesController.cs" />
+    <Compile Include="Controllers\ParticiparEventoController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
     <Compile Include="Controllers\registrarController.cs" />
     <Compile Include="Controllers\SobreController.cs" />
@@ -206,6 +210,8 @@
     <Compile Include="Models\Convites.cs" />
     <Compile Include="Models\CoolEventsEncrypter.cs" />
     <Compile Include="Models\CoolEventsMailer.cs" />
+    <Compile Include="Models\Enquete.cs" />
+    <Compile Include="Models\Enquetes.cs" />
     <Compile Include="Models\Evento.cs" />
     <Compile Include="Models\EventoTemplate.cs" />
     <Compile Include="Models\EventoView.cs" />
@@ -240,6 +246,8 @@
     <Content Include="Views\meusconvites\index.cshtml" />
     <Content Include="Views\ConviteAceito\Index.cshtml" />
     <Content Include="Views\Evento\Index.cshtml" />
+    <Content Include="Views\Enquetes\Index.cshtml" />
+    <Content Include="Views\Enquete\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -251,6 +259,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\aceitarconvite\" />
     <Folder Include="Views\Logout\" />
+    <Folder Include="Views\ParticiparEvento\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

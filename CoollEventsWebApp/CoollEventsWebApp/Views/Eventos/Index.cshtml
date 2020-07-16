@@ -184,7 +184,7 @@
     </div>
     <div id="EventosWrapper">
    @foreach(CoollEventsWebApp.Models.EventoTemplate evento in Model) { 
-        <a href="/evento?e=@evento.idEvento" class="eventoClick">
+        <a href="/evento?id=@evento.idEvento" class="eventoClick">
             <div class="evento">
                 <img src="http://localhost:3000/eventoLogo/@evento.Logo" class="eventoFoto" />
                 <div class="eventoContentWrapper" style="width: 100%;">
