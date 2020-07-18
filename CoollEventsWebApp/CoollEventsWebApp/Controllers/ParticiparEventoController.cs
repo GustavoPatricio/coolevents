@@ -20,7 +20,7 @@ namespace CoollEventsWebApp.Controllers
             {
                 Convites.ConfirmarPresenca((int) id);
 
-                return View();
+                return RedirectToAction("Index", "ConviteAceito");
             }
             catch (Exception)
             {

@@ -53,23 +53,32 @@ namespace CoollEventsWebApp.Models {
             conexao.command.Parameters.Add("@IDEVENTO", SqlDbType.Int).Value = idEvento;
 
             conexao.connection.Open();
-            conexao.command.ExecuteNonQuery();
-            
+            var linhasfetadas = (int)conexao.command.ExecuteNonQuery();
+
+            if(linhasfetadas == 0)
+            {
+                conexao.command.CommandText = "INSERT INTO TBL_CONVIDADO VALUES (@IDUSUARIO, @IDEVENTO, 1)";
+                conexao.command.ExecuteNonQuery();
+            }
+
 
             conexao.command.CommandText = "select count(*) from tbl_convidado where id_evento = @IDEVENTO and confirmado = 1";
-            conexao.command.Parameters.Add("@IDEVENTO", SqlDbType.Int).Value = idEvento;
 
-            int confirmados = (int) conexao.command.ExecuteScalar();
+            int confirmados = (int)conexao.command.ExecuteScalar();
 
             conexao.command.CommandText = "select max_pessoas from tbl_evento where id_evento = @IDEVENTO";
-            conexao.command.Parameters.Add("@IDEVENTO", SqlDbType.Int).Value = idEvento;
 
             int max = (int)conexao.command.ExecuteScalar();
+
+            if (max == 0)
+            {
+                conexao.connection.Close();
+                return;
+            }
 
             if(confirmados >= max)
             {
                 conexao.command.CommandText = "UPDATE TBL_EVENTO SET OCULTO = 1 WHERE ID_EVENTO = @IDEVENTO";
-                conexao.command.Parameters.Add("@IDEVENTO", SqlDbType.Int).Value = idEvento;
 
                 conexao.command.ExecuteNonQuery();
             }

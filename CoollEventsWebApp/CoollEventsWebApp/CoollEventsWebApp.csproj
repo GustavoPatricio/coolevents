@@ -196,6 +196,8 @@
     <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Controllers\ManutencaoController.cs" />
     <Compile Include="Controllers\meusconvitesController.cs" />
+    <Compile Include="Controllers\MeusEventosController.cs" />
+    <Compile Include="Controllers\ParticipandoController.cs" />
     <Compile Include="Controllers\ParticiparEventoController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
     <Compile Include="Controllers\registrarController.cs" />
@@ -248,6 +250,8 @@
     <Content Include="Views\Evento\Index.cshtml" />
     <Content Include="Views\Enquetes\Index.cshtml" />
     <Content Include="Views\Enquete\Index.cshtml" />
+    <Content Include="Views\MeusEventos\Index.cshtml" />
+    <Content Include="Views\Participando\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

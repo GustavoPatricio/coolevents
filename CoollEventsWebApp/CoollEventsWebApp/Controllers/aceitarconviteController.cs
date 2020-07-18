@@ -22,7 +22,7 @@ namespace CoollEventsWebApp.Controllers
                 Convites.ConfirmarPresenca(Convert.ToInt32(evento));
                 return RedirectToAction("index", "ConviteAceito");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 return RedirectToAction("Index", "Erro");

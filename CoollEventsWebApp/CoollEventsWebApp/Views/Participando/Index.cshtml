@@ -1,7 +1,7 @@
 ﻿@model List<CoollEventsWebApp.Models.EventoTemplate>
 
 @{
-    ViewBag.Title = "CoolEvents: Eventos";
+    ViewBag.Title = "CoolEvents: Meus eventos";
     Layout = "~/Views/coollayout.cshtml";
 }
 
@@ -24,18 +24,18 @@
         display: flex;
     }
 
-    #SearchWrapper img {
-        float: left;
-        height: 4vh;
-        align-self: center;
-        margin-left: 2vw;
-        cursor: pointer;
-        transition: all .1s ease-in-out;
-    }
+        #SearchWrapper img {
+            float: left;
+            height: 4vh;
+            align-self: center;
+            margin-left: 2vw;
+            cursor: pointer;
+            transition: all .1s ease-in-out;
+        }
 
-    #SearchWrapper img:hover {
-        transform: rotate(20deg);
-    }
+            #SearchWrapper img:hover {
+                transform: rotate(20deg);
+            }
 
         #SearchWrapper input {
             display: flex;
@@ -88,12 +88,12 @@
         display: flex;
         align-content: center;
     }
-    
-    .evento img {
-        margin-left: 1vw;
-        height: 80%;
-        align-self: center;
-    }
+
+        .evento img {
+            margin-left: 1vw;
+            height: 80%;
+            align-self: center;
+        }
 
         .evento .eventoContentWrapper {
             width: 100%;
@@ -104,11 +104,10 @@
             padding: 1.5vh 2vw;
         }
 
-        .evento .eventoNome { 
-        
+        .evento .eventoNome {
         }
 
-        .evento .eventoData { 
+        .evento .eventoData {
             margin-top: .5vh;
         }
 
@@ -133,28 +132,28 @@
         padding-left: 2vw;
     }
 
-    #Funcoes a { 
-        font-family: sans-serif;
-        align-self: center;
-        color: #171717;
-        margin-right: 3vw;
-        border: 1px solid #171717;
-        padding: 1vh 1vw;
-        transition: all .2s ease-in-out;
-        border-radius: 3px;
-    }
+        #Funcoes a {
+            font-family: sans-serif;
+            align-self: center;
+            color: #171717;
+            margin-right: 3vw;
+            border: 1px solid #171717;
+            padding: 1vh 1vw;
+            transition: all .2s ease-in-out;
+            border-radius: 3px;
+        }
 
-    #Funcoes a:hover { 
-        text-decoration: none;
-        background-color: #1d1d1d;
-        color: white;
-    }
-
+            #Funcoes a:hover {
+                text-decoration: none;
+                background-color: #1d1d1d;
+                color: white;
+            }
 </style>
 
 <div id="bg">
 
-    @if(Session["idUsuario"] != null) {
+    @if (Session["idUsuario"] != null)
+    {
     <div id="Funcoes">
         <a href="/eventos">
             Eventos
@@ -177,52 +176,23 @@
     </div>
     }
 
-    <div id="SearchWrapper">
-        <img src="/Resources/img/lupa.png" id="lupa"/>
-        @{
-            if (string.IsNullOrWhiteSpace(Request.QueryString["q"]))
-            {
-                <input type="text" name="q" id="q" placeholder="Procurar" />
-            }
-            else
-            {
-                <input type="text" name="q" id="q" value="@Request.QueryString["q"].ToString()" placeholder="Procurar" />
-            }
-        }
-
-    </div>
     <div id="EventosWrapper">
-   @foreach(CoollEventsWebApp.Models.EventoTemplate evento in Model) { 
-        <a href="/evento?id=@evento.idEvento" class="eventoClick">
-            <div class="evento">
-                <img src="http://localhost:3000/eventoLogo/@evento.Logo" class="eventoFoto" />
-                <div class="eventoContentWrapper" style="width: 100%;">
-                    <div class="eventoContent">
-                        <div class="eventoNome"> <b> @evento.Nome </b> </div>
-                        <div class="eventoData">  <i> @evento.Data_evento </i> </div>
-                        <div class="eventoDescricao">  @evento.Descricao  </div>
-                        <div class="eventoCidadeUF"> @evento.Cidade - @evento.UF </div>
+        @foreach (CoollEventsWebApp.Models.EventoTemplate evento in Model)
+        {
+            <a href="/evento?id=@evento.idEvento" class="eventoClick">
+                <div class="evento">
+                    <img src="http://localhost:3000/eventoLogo/@evento.Logo" class="eventoFoto" />
+                    <div class="eventoContentWrapper" style="width: 100%;">
+                        <div class="eventoContent">
+                            <div class="eventoNome"> <b> @evento.Nome </b> </div>
+                            <div class="eventoData">  <i> @evento.Data_evento </i> </div>
+                            <div class="eventoDescricao">  @evento.Descricao  </div>
+                            <div class="eventoCidadeUF"> @evento.Cidade - @evento.UF </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </a>
-     }
+            </a>
+        }
     </div>
 </div>
 
-<script>
-    function Search() {
-        window.location.href = "/Eventos?q=" + $("#q").val();
-    }
-
-    $("#lupa").click(() => {
-        Search();
-    });
-
-    $("#q").keyup((event) => {
-        if (event.keyCode == 13) {
-            Search();
-        }
-    });
-
-</script>

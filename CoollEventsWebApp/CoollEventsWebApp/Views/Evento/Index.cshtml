@@ -168,7 +168,30 @@
                 <div class="value"> @Model.Complemento</div>
             </div>
         </div>
-        
+
+        @if (Session["idUsuario"] != null)
+        {
+            <div style="width: 100%; margin-top: 5vh; display: flex; ">
+                <style>
+                    #tarefas {
+                        border: 1px solid #09dd68;
+                        padding: 1vh 2vw;
+                        background-color: none;
+                        color: #09dd68;
+                        transition: all .2s ease-in-out;
+                    }
+
+                        #tarefas:hover {
+                            border: 1px solid #09dd68;
+                            padding: 1vh 2vw;
+                            background-color: #09dd68;
+                            color: white;
+                            text-decoration: none;
+                        }
+                </style>
+                <a href="/manutencao" id="tarefas"> Tarefas do evento </a>
+            </div>
+        }
         <div style="width: 100%; margin-top: 5vh; display: flex; justify-content: center">
             <a href="/participarevento?id=@Model.Id" id="participar"> Participar </a>
         </div>
